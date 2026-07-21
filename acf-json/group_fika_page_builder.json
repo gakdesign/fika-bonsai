@@ -1144,6 +1144,454 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                {
+                    "key": "layout_fika_split_content_module",
+                    "name": "split_content_module",
+                    "label": "Split Content",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fika_split_title",
+                            "label": "Title",
+                            "name": "main_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Full-width heading above the split.",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_split_reverse_order",
+                            "label": "Reverse Order",
+                            "name": "reverse_order",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Show the Right side first (left) on desktop.",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_fika_split_vertical_align",
+                            "label": "Vertical Alignment",
+                            "name": "vertical_align",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "top": "Top",
+                                "center": "Vertically Centered"
+                            },
+                            "default_value": "top",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_fika_split_left",
+                            "label": "Left Side",
+                            "name": "left_content",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_fika_split_left_type",
+                                    "label": "Content Type",
+                                    "name": "content_type",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "text": "Text + CTA",
+                                        "image": "Image",
+                                        "video": "Video"
+                                    },
+                                    "default_value": "text",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "create_options": 0,
+                                    "save_options": 0
+                                },
+                                {
+                                    "key": "field_fika_split_left_text",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "aria-label": "",
+                                    "type": "wysiwyg",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_left_type",
+                                                "operator": "==",
+                                                "value": "text"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "tabs": "all",
+                                    "toolbar": "basic",
+                                    "media_upload": 0,
+                                    "delay": 0
+                                },
+                                {
+                                    "key": "field_fika_split_left_cta_text",
+                                    "label": "CTA Text",
+                                    "name": "cta_text",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Requires CTA Link to display.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_left_type",
+                                                "operator": "==",
+                                                "value": "text"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "Find out more",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_fika_split_left_cta_link",
+                                    "label": "CTA Link",
+                                    "name": "cta_link",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_left_type",
+                                                "operator": "==",
+                                                "value": "text"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_fika_split_left_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_left_type",
+                                                "operator": "==",
+                                                "value": "image"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "preview_size": "medium"
+                                },
+                                {
+                                    "key": "field_fika_split_left_video",
+                                    "label": "Video URL",
+                                    "name": "video_url",
+                                    "aria-label": "",
+                                    "type": "oembed",
+                                    "instructions": "Paste a YouTube or Vimeo link.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_left_type",
+                                                "operator": "==",
+                                                "value": "video"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "width": "",
+                                    "height": ""
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_fika_split_right",
+                            "label": "Right Side",
+                            "name": "right_content",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_fika_split_right_type",
+                                    "label": "Content Type",
+                                    "name": "content_type",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "text": "Text + CTA",
+                                        "image": "Image",
+                                        "video": "Video"
+                                    },
+                                    "default_value": "image",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "create_options": 0,
+                                    "save_options": 0
+                                },
+                                {
+                                    "key": "field_fika_split_right_text",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "aria-label": "",
+                                    "type": "wysiwyg",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_right_type",
+                                                "operator": "==",
+                                                "value": "text"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "tabs": "all",
+                                    "toolbar": "basic",
+                                    "media_upload": 0,
+                                    "delay": 0
+                                },
+                                {
+                                    "key": "field_fika_split_right_cta_text",
+                                    "label": "CTA Text",
+                                    "name": "cta_text",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Requires CTA Link to display.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_right_type",
+                                                "operator": "==",
+                                                "value": "text"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "Find out more",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_fika_split_right_cta_link",
+                                    "label": "CTA Link",
+                                    "name": "cta_link",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_right_type",
+                                                "operator": "==",
+                                                "value": "text"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_fika_split_right_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_right_type",
+                                                "operator": "==",
+                                                "value": "image"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "preview_size": "medium"
+                                },
+                                {
+                                    "key": "field_fika_split_right_video",
+                                    "label": "Video URL",
+                                    "name": "video_url",
+                                    "aria-label": "",
+                                    "type": "oembed",
+                                    "instructions": "Paste a YouTube or Vimeo link.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_fika_split_right_type",
+                                                "operator": "==",
+                                                "value": "video"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "width": "",
+                                    "height": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ],
             "button_label": "Add block",
@@ -1179,5 +1627,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1784622600
+    "modified": 1784623200
 }

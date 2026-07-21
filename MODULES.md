@@ -13,6 +13,7 @@ Five new ACF-compatible modules have been created from the design prototype:
 | **Story Block** | `story-block.php` | Blockquote / testimonial with decorative divider |
 | **Slider** | `slider_module.php` | Full-width fade slider (max-height 800px) with optional title/content/CTA overlay per slide |
 | **Contact** | `contact_module.php` | Full-width title, then 50/50 split: rich content (left) and a form shortcode (right) |
+| **Split Content** | `split_content_module.php` | Full-width title, then a left/right split; each side is independently Text+CTA, Image, or Video |
 
 ## Setup Steps
 
@@ -161,6 +162,22 @@ Overlay is left-aligned, 60% width, title pinned top / content + CTA pinned bott
 | Background Style | Select | No | "Default" (surface) or "Raised" (surface-raised) |
 
 Stacks on mobile/tablet, splits 50/50 from 900px up. The form column is styled as a raised card (`--surface-raised`, `--line` border) regardless of the module's own background style, so the form reads clearly against either background.
+
+### Split Content
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Title | Text | No | Full-width heading above the split |
+| Reverse Order | True/False | No | Shows the Right side first on desktop (≥900px) |
+| Vertical Alignment | Select | No | "Top" (default) or "Vertically Centered" — applies to both columns |
+| Left Side / Right Side (Group) | — | — | Each side is independent |
+| — Content Type | Select | — | "Text + CTA", "Image", or "Video" — controls which fields below appear |
+| — Text | WYSIWYG (basic toolbar) | Text + CTA type | — |
+| — CTA Text / CTA Link | Text / URL | Text + CTA type | Both required together to show the button |
+| — Image | Image | Image type | — |
+| — Video URL | oEmbed | Video type | Paste a YouTube or Vimeo link; rendered via `bonsai_kses_iframe()` |
+
+Stacks on mobile/tablet, splits 50/50 from 900px up. Video embeds should be checked against the Cookiebot consent rules in `~/.claude/agents/compliance-checker.md` before go-live — YouTube/Vimeo iframes need consent wrapping.
 
 ## Design System Reference
 

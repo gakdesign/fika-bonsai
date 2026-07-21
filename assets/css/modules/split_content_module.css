@@ -1,0 +1,142 @@
+/**
+ * Split Content Module
+ *
+ * Full-width title, then a left/right split (text+CTA / image / video per side).
+ * Styles for template-parts/modules/split_content_module.php
+ */
+
+.split-content-module {
+	background: var(--surface);
+	padding: 4rem 0;
+}
+
+.split-content-title {
+	font-family: var(--font-heading);
+	font-weight: 400;
+	font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+	color: var(--ink-strong);
+	margin: 0 0 2.5rem;
+	text-align: center;
+}
+
+.split-content-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2.5rem;
+}
+
+.split-content-side {
+	display: flex;
+	flex-direction: column;
+}
+
+.split-content-text {
+	color: var(--ink);
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+.split-content-text h1,
+.split-content-text h2,
+.split-content-text h3 {
+	font-family: var(--font-heading);
+	color: var(--ink-strong);
+}
+
+.split-content-text a {
+	color: var(--accent);
+}
+
+.split-content-text a:hover {
+	color: var(--accent-hover);
+}
+
+.split-content-cta {
+	align-self: flex-start;
+	margin-top: 1.5rem;
+}
+
+.split-content-media {
+	margin: 0;
+	width: 100%;
+}
+
+.split-content-media img {
+	width: 100%;
+	height: auto;
+	display: block;
+	border-radius: var(--radius);
+}
+
+.split-content-video {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border-radius: var(--radius);
+	overflow: hidden;
+}
+
+.split-content-video iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* Desktop 50/50 split */
+@media (min-width: 900px) {
+	.split-content-grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+	}
+
+	.split-content-grid.split-content-reverse {
+		direction: rtl;
+	}
+
+	.split-content-grid.split-content-reverse .split-content-side {
+		direction: ltr;
+	}
+
+	.split-content-grid.split-content-align-center {
+		align-items: center;
+	}
+}
+
+/* Breakpoints */
+@media (max-width: 1536px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1366px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1280px) {
+	/* No changes needed */
+}
+
+@media (max-width: 992px) {
+	/* No changes needed */
+}
+
+@media (max-width: 768px) {
+	.split-content-module {
+		padding: 3rem 0;
+	}
+
+	.split-content-title {
+		margin-bottom: 2rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.split-content-module {
+		padding: 2.5rem 0;
+	}
+
+	.split-content-grid {
+		gap: 2rem;
+	}
+}
