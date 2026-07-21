@@ -47,13 +47,17 @@
 }
 
 .class-card {
+	display: block;
+}
+
+.class-card-link {
 	text-decoration: none;
 	color: inherit;
 	display: block;
 	transition: transform 0.2s ease;
 }
 
-.class-card:hover {
+.class-card-link:hover {
 	transform: translateY(-2px);
 }
 
@@ -73,7 +77,7 @@
 	display: block;
 }
 
-.class-card:hover img {
+.class-card-link:hover img {
 	transform: scale(1.03);
 }
 
@@ -88,6 +92,13 @@
 .class-meta {
 	font-size: 14px;
 	color: var(--muted);
+	margin: 0 0 0.25rem;
+	line-height: 1.5;
+}
+
+.class-location {
+	font-size: 13px;
+	color: var(--muted);
 	margin: 0 0 0.75rem;
 	line-height: 1.5;
 }
@@ -96,6 +107,26 @@
 	margin-top: 0.5rem;
 	font-size: 14px;
 	padding: 0.55rem 1rem;
+}
+
+/* Sold out state */
+.class-card-sold-out {
+	opacity: 0.7;
+}
+
+.class-card-sold-out figure {
+	filter: grayscale(60%);
+}
+
+.btn-sold-out {
+	display: inline-block;
+	margin-top: 0.5rem;
+	font-size: 14px;
+	padding: 0.55rem 1rem;
+	border-radius: var(--radius);
+	background: var(--line);
+	color: var(--muted);
+	cursor: default;
 }
 
 .section-cta {

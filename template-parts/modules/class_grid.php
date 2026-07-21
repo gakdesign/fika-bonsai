@@ -3,10 +3,13 @@
  * Class Grid Module
  *
  * Featured classes / workshops grid with booking functionality.
+ * Cards are populated from a Relationship field selecting `market` and
+ * `workshop` posts — all card content comes from the Market / Workshop
+ * Details field group on the related post (acf-json/group_fika_market_workshop_details.json).
  * ACF Flexible Content Layout: class_grid
  *
- * Related CSS: assets/css/modules/_class-grid.css
- * Related ACF: acf-json/group_fika_class_grid.json
+ * Related CSS: assets/css/modules/class_grid.css
+ * Related ACF: acf-json/group_fika_page_builder.json
  */
 
 $section_title = get_sub_field( 'section_title' );
@@ -32,34 +35,62 @@ $view_all_text = get_sub_field( 'view_all_text' ) ?: 'View full calendar';
 
 		<?php if ( $classes && is_array( $classes ) && count( $classes ) > 0 ) : ?>
 		<div class="card-grid">
-			<?php foreach ( $classes as $class ) : ?>
-			<a class="class-card" href="<?php echo esc_url( $class['link'] ); ?>">
-				<?php if ( ! empty( $class['image'] ) ) : ?>
-				<figure>
-					<?php
-					$img_id = is_array( $class['image'] ) ? $class['image']['ID'] : $class['image'];
-					echo wp_get_attachment_image(
-						$img_id,
-						'card',
-						false,
-						array( 'loading' => 'lazy' )
-					);
-					?>
-				</figure>
+			<?php foreach ( $classes as $class_id ) :
+				$class_id = is_object( $class_id ) ? $class_id->ID : $class_id;
+
+				$title     = get_the_title( $class_id );
+				$image     = get_field( 'image', $class_id );
+				$date      = get_field( 'event_date', $class_id );
+				$time      = get_field( 'event_time', $class_id );
+				$price     = get_field( 'price', $class_id );
+				$location  = get_field( 'location', $class_id );
+				$book_link = get_field( 'book_link', $class_id );
+				$sold_out  = get_field( 'sold_out', $class_id );
+
+				$meta_parts = array_filter( array( $date, $time, $price ) );
+				$meta       = implode( ' · ', $meta_parts );
+				?>
+			<div class="class-card<?php echo $sold_out ? ' class-card-sold-out' : ''; ?>">
+				<?php if ( ! $sold_out && $book_link ) : ?>
+				<a class="class-card-link" href="<?php echo esc_url( $book_link ); ?>">
 				<?php endif; ?>
 
-				<?php if ( ! empty( $class['title'] ) ) : ?>
-				<h3><?php echo esc_html( $class['title'] ); ?></h3>
-				<?php endif; ?>
+					<?php if ( $image ) : ?>
+					<figure>
+						<?php
+						$img_id = is_array( $image ) ? $image['ID'] : $image;
+						echo wp_get_attachment_image(
+							$img_id,
+							'card',
+							false,
+							array( 'loading' => 'lazy' )
+						);
+						?>
+					</figure>
+					<?php endif; ?>
 
-				<?php if ( ! empty( $class['meta'] ) ) : ?>
-				<p class="class-meta"><?php echo esc_html( $class['meta'] ); ?></p>
-				<?php endif; ?>
+					<?php if ( $title ) : ?>
+					<h3><?php echo esc_html( $title ); ?></h3>
+					<?php endif; ?>
 
-				<span class="btn btn-primary">
-					<?php echo esc_html( $class['cta_text'] ?? 'Book' ); ?>
-				</span>
-			</a>
+					<?php if ( $meta ) : ?>
+					<p class="class-meta"><?php echo esc_html( $meta ); ?></p>
+					<?php endif; ?>
+
+					<?php if ( $location ) : ?>
+					<p class="class-location"><?php echo esc_html( $location ); ?></p>
+					<?php endif; ?>
+
+					<?php if ( $sold_out ) : ?>
+					<span class="btn btn-sold-out"><?php esc_html_e( 'Sold Out', 'fika-bonsai' ); ?></span>
+					<?php elseif ( $book_link ) : ?>
+					<span class="btn btn-primary"><?php esc_html_e( 'Book', 'fika-bonsai' ); ?></span>
+					<?php endif; ?>
+
+				<?php if ( ! $sold_out && $book_link ) : ?>
+				</a>
+				<?php endif; ?>
+			</div>
 			<?php endforeach; ?>
 		</div>
 		<?php endif; ?>

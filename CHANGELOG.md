@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [acf-json/group_fika_market_workshop_details.json] Added "Market / Workshop Details" field group (post_type == market OR workshop): Date, Time, Price, Location, Book Link, Spots Remaining, Sold Out, Image, Description
 
 ### Changed
+- [acf-json/group_fika_page_builder.json] Class Grid's "Classes" field changed from a manual repeater to a Relationship field (max 3) selecting `market`/`workshop` posts
+- [template-parts/modules/class_grid.php] Class Grid cards now pull title, image, date/time/price, location, book link, and sold-out state live from the related post instead of manual entry; sold-out posts render a disabled "Sold Out" label instead of a Book button
+- [assets/css/modules/class_grid.css] Added sold-out card styling (greyscale image, disabled label) and a location line; card link/hover styles moved from `.class-card` to a new inner `.class-card-link` since the card is no longer always an anchor
 - [inc/assets.php] Corrected Google Fonts URL from Cormorant Garamond to the Fika spec fonts: Varela Round + Inter (400, 500, 600)
 
 ### Fixed

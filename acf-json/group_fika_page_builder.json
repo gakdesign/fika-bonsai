@@ -466,8 +466,8 @@
                             "label": "Classes",
                             "name": "classes",
                             "aria-label": "",
-                            "type": "repeater",
-                            "instructions": "Add featured classes (2–3 recommended)",
+                            "type": "relationship",
+                            "instructions": "Pick up to 3 markets or workshops to feature. Card content (title, date/time/price, location, image, book link, sold out) is pulled automatically from each selected post — see the Market / Workshop Details field group.",
                             "required": 0,
                             "conditional_logic": false,
                             "wrapper": {
@@ -475,121 +475,24 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "min": 1,
-                            "max": 0,
-                            "layout": "table",
-                            "button_label": "Add class",
-                            "rows_per_page": 20,
-                            "collapsed": "",
-                            "sub_fields": [
-                                {
-                                    "key": "field_fika_class_image",
-                                    "label": "Image",
-                                    "name": "image",
-                                    "aria-label": "",
-                                    "type": "image",
-                                    "instructions": "",
-                                    "required": 1,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "id",
-                                    "preview_size": "thumbnail",
-                                    "library": "all",
-                                    "min_width": 0,
-                                    "min_height": 0,
-                                    "min_size": 0,
-                                    "max_width": 0,
-                                    "max_height": 0,
-                                    "max_size": 0,
-                                    "mime_types": "",
-                                    "parent_repeater": "field_fika_classes"
-                                },
-                                {
-                                    "key": "field_fika_class_title",
-                                    "label": "Title",
-                                    "name": "title",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "placeholder": "Nordic enriched dough",
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_fika_classes"
-                                },
-                                {
-                                    "key": "field_fika_class_meta",
-                                    "label": "Meta (date, time, price)",
-                                    "name": "meta",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "placeholder": "Sat 14 June · 10:00–15:00 · £95",
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_fika_classes"
-                                },
-                                {
-                                    "key": "field_fika_class_cta_text",
-                                    "label": "CTA Text",
-                                    "name": "cta_text",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "Book",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_fika_classes"
-                                },
-                                {
-                                    "key": "field_fika_class_link",
-                                    "label": "Class Link",
-                                    "name": "link",
-                                    "aria-label": "",
-                                    "type": "url",
-                                    "instructions": "",
-                                    "required": 1,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "placeholder": "https:\/\/",
-                                    "default_value": "",
-                                    "parent_repeater": "field_fika_classes"
-                                }
-                            ]
+                            "post_type": [
+                                "market",
+                                "workshop"
+                            ],
+                            "post_status": [
+                                "publish"
+                            ],
+                            "taxonomy": "",
+                            "filters": [
+                                "search",
+                                "post_type"
+                            ],
+                            "elements": [
+                                "featured_image"
+                            ],
+                            "min": 0,
+                            "max": 3,
+                            "return_format": "id"
                         },
                         {
                             "key": "field_fika_class_view_all_link",
@@ -1627,5 +1530,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1784623200
+    "modified": 1784625000
 }

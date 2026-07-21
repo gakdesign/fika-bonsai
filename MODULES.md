@@ -108,14 +108,27 @@ In the page builder (Flexible Content field):
 |-------|------|----------|-------|
 | Section Title | Text | No | e.g. "Upcoming classes" |
 | Section Intro | Textarea | No | e.g. "A few seats left..." |
-| Classes (Repeater) | — | **Yes** | 2–3 class cards |
-| — Image | Image | **Yes** | Square or landscape |
-| — Title | Text | — | e.g. "Nordic enriched dough" |
-| — Meta | Text | — | e.g. "Sat 14 June · 10:00–15:00 · £95" |
-| — CTA Text | Text | — | Defaults to "Book" |
-| — Class Link | URL | **Yes** | Link to booking/detail page |
+| Classes (Relationship) | — | No, max 3 | Pick from `market` and `workshop` posts — no manual entry |
 | View All Link | URL | No | Link to full calendar |
 | View All Text | Text | No | Defaults to "View full calendar" |
+
+Card content is **not** entered on the page builder row — it's pulled live from each selected post via the [Market / Workshop Details](#market--workshop-details) field group: title (post title), image, event_date + event_time + price (joined into one meta line), location, and book_link. If a post's **Sold Out** toggle is on, its card shows a disabled "Sold Out" label instead of the Book button and isn't clickable. Editing the market/workshop post updates every Class Grid instance that features it — no need to re-edit the page.
+
+#### Market / Workshop Details
+
+Separate field group (`acf-json/group_fika_market_workshop_details.json`), shown on `post_type == market` OR `post_type == workshop`:
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Date | Date Picker | **Yes** | — |
+| Time | Time Picker | **Yes** | — |
+| Price | Text | **Yes** | e.g. "£25" or "Free" |
+| Location | Text | No | Venue or address |
+| Book Link | URL | No | — |
+| Spots Remaining | Number | No | Blank = unlimited / not tracked |
+| Sold Out | True/False | No | Overrides Spots Remaining — hides Book Link and shows "Sold Out" on Class Grid cards |
+| Image | Image | No | Used by Class Grid cards |
+| Description | WYSIWYG (basic toolbar) | No | For the single market/workshop template |
 
 ### Product Grid
 
