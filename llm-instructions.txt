@@ -1,0 +1,239 @@
+# LLM Instructions — Fika Exeter
+# Theme: fika-bonsai | Agency: The Bonsai Digital Collective
+# Purpose: Provide project context, code standards, and behavioural rules for any AI tool working on this theme.
+
+---
+
+[PROJECT CONTEXT]
+- Client: Fika Exeter — a cookery school and artisan shop based in Exeter, Devon, UK
+- Named after the Swedish concept of a coffee break with something sweet
+- Site purpose: promote and book cookery classes, sell products via WooCommerce shop, sell gift vouchers
+- Theme slug: fika-bonsai
+- Theme path: /wp-content/themes/fika-bonsai
+- Base theme: Bonsai Base Theme by The Bonsai Digital Collective
+- Text domain: bonsai-base-theme
+- Author: Ben Ervine / The Bonsai Digital Collective
+- Lead designer: Chrissie (The Bonsai Digital Collective)
+- WordPress version: 6.0+ / PHP 8.0+
+- Core tools: ACF Pro, jQuery (global), Bootstrap 5 (custom build), WooCommerce, Cookiebot, Slick carousel, Google Fonts
+
+---
+
+[BRAND & WRITING STYLE]
+- Tone: Warm, unpretentious, quietly confident. Kitchen-table friendliness with a premium edge.
+- Personality: Scandinavian minimal. Calm, considered, never fussy.
+- Audience: Home cooks and food lovers in and around Exeter, Devon. Gift-buyers. Families. Occasional corporate groups.
+- Voice in copy: First person plural ("we love..."), direct, sensory. Seasonal references are natural here.
+- Avoid: Corporate language, buzzwords, over-explanation, exclamation marks, anything that sounds like a supermarket flyer.
+- UK English throughout: "colour", "centre", "organise", "flavour".
+
+---
+
+[THEME ARCHITECTURE]
+- Bootstrap file: functions.php — modular loader using a $modules array of require_once calls into /inc/
+- Constants defined: BONSAI_THEME_DIR, BONSAI_THEME_URI
+- Key inc/ modules loaded in order:
+    assets, theme-setup, gutenberg, acf, security, comments, editor, tinymce-styles,
+    helpers, module-helpers, accessibility, media, content, cleanup, rss,
+    lazy-load, webp, post-labels, frontend, header, acf-json, acf-defaults
+- Gutenberg: disabled (inc/gutenberg.php)
+- Comments: disabled (inc/comments.php)
+- 'Posts' post type renamed to 'News' (inc/post-labels.php)
+- Menus registered: primary, mobile, footer, legal
+- Image sizes: [ASSUMED] — standard WordPress sizes plus any registered in inc/media.php
+- Custom function prefix: bonsai_ (all custom PHP functions must use this prefix)
+
+---
+
+[PAGE TEMPLATES & LAYOUT]
+- templates/page.php — standard page template, loads template-parts/content/content-page.php
+- templates/single.php — single post (News), loads content-single.php
+- templates/single-campaign.php — campaign post type template
+- template-parts/content/content-page.php — calls template-parts/modules/page-builder.php
+- template-parts/modules/page-builder.php — child-aware ACF Flexible Content dispatcher
+    - For each layout row: enqueues assets/css/modules/{layout}.css (child-first), then includes template-parts/modules/{layout}.php
+    - Falls back to parent theme if child theme override not found
+    - WP_DEBUG notice fired if no template found for a layout
+- template-parts/header/site-header.php — site header partial
+- template-parts/footer/site-footer.php — site footer partial
+- template-parts/snippets/content-block-intro.php — reusable intro block snippet
+- template-parts/content/content-404.php, content-campaign.php
+
+---
+
+[ACF & OPTIONS]
+- ACF Pro is installed and active on this project — always use it for all custom fields
+- ACF JSON sync folder: /acf-json/
+    - Commit /acf-json/ on every field group change — never leave groups unsynced
+    - On new environment: activate theme, go to Custom Fields > Field Groups, click Sync Available
+- Options pages registered (inc/acf.php):
+    - Site Settings (slug: theme-general-settings, cap: edit_posts) — sitewide content used throughout the theme
+    - Humans.txt Editor (slug: site-text-files, cap: manage_options) — writes /humans.txt on save
+- Key ACF field groups (all in /acf-json/):
+    - group_fika_hero_split.json — hero-split layout
+    - group_fika_services_row.json — services-row layout
+    - group_fika_class_grid.json — class-grid layout
+    - group_fika_product_grid.json — product-grid layout
+    - group_fika_story_block.json — story-block layout
+- page_builder field: pre-populated for new posts via inc/acf-defaults.php
+- Humans.txt writer: acf/save_post hook (post_id === 'options') reads 'humans_txt_content' field and writes to ABSPATH . 'humans.txt'
+
+---
+
+[FLEXIBLE CONTENT MODULES]
+Five ACF Flexible Content layouts are available. Each has a matching PHP template and CSS file.
+
+| Layout slug     | Template file                              | CSS file                                  | Purpose                                        |
+|-----------------|--------------------------------------------|-------------------------------------------|------------------------------------------------|
+| hero-split      | template-parts/modules/hero-split.php      | assets/css/modules/hero-split.css         | Organic split: text left, clipped image right  |
+| services-row    | template-parts/modules/services-row.php    | assets/css/modules/services-row.css       | Three-column service blocks (Classes/Shop/Vouchers) |
+| class-grid      | template-parts/modules/class-grid.php      | assets/css/modules/class-grid.css         | Cookery class cards with booking CTA           |
+| product-grid    | template-parts/modules/product-grid.php    | assets/css/modules/product-grid.css       | Featured WooCommerce product cards             |
+| story-block     | template-parts/modules/story-block.php     | assets/css/modules/story-block.css        | Blockquote / testimonial with decorative divider |
+
+To add a new module:
+1. Create the ACF layout in the page_builder field group, name it with underscores (e.g. image_text_split)
+2. Create template-parts/modules/{layout-slug}.php
+3. Create assets/css/modules/{layout-slug}.css
+4. Export ACF JSON and commit /acf-json/
+
+---
+
+[DESIGN TOKENS]
+CSS custom properties defined in assets/css/core/base.css and module CSS files.
+The Fika design system uses:
+
+- --accent:       #6E4518   (cinnamon brown — primary brand colour, CTAs, links)
+- --accent-hover: #543210   (darker cinnamon — hover state)
+- --surface:      #F5F3F2   (warm off-white — panel and card backgrounds)
+- --ink:          #2B2B2B   (primary body text)
+- --ink-strong:   #1A1A1A   (headings, high-emphasis text)
+- --muted:        #6B6B6B   (captions, meta, secondary labels)
+- --line:         #E6E4E1   (borders, dividers, input outlines)
+- Heading font:   Varela Round (Google Fonts, rounded geometric — warm, friendly)
+- Body font:      Inter (Google Fonts, clean sans-serif — highly readable)
+- Border radius:  14px (used consistently across cards, buttons, inputs)
+- Max content width: ~72rem / 1152px (class: .max-w)
+
+Note: base.css also carries legacy colour variables from the base theme (--black, --orange, etc.).
+Always prefer the Fika design tokens above when writing new module CSS.
+
+---
+
+[FRONT-END STACK]
+- jQuery: available globally via wp_enqueue_script('jquery') — use it for all custom JS
+- Bootstrap 5: custom build (bootstrap-custom.min.css + bootstrap.bundle.min.js) — grid, utilities, JS components
+- Slick carousel: slick.js + slick.css — for any carousel/slider needs
+- AOS (Animate On Scroll): commented out in assets.php — do NOT enable without checking bundle size and consent implications
+- FontAwesome 6 Free: self-hosted in assets/fonts/fontawesome/ — brands and solid sets available
+- Google Fonts: Varela Round + Inter loaded via wp_head preconnect + wp_enqueue_style
+- CSS pipeline: plain CSS, no preprocessor. Module CSS loaded on-demand by page-builder.php dispatcher.
+    - Core styles: assets/css/core/ (base.css, header.css, footer.css, additions.css)
+    - Module styles: assets/css/modules/{layout}.css — loaded only when that module appears on a page
+- Build system: none. CSS and JS are hand-authored and committed directly. Do NOT minify by hand — use a plugin or pipeline if needed.
+- Do NOT hand-edit compiled files. Do NOT introduce npm/webpack unless the project specifically agrees to it.
+- SiteMinder IBE widget: enqueued only on is_singular('accommodation') — conditional load, deferred.
+
+---
+
+[WORDPRESS & PHP GUIDELINES]
+- Follow WordPress Coding Standards at all times
+- All custom functions prefixed: bonsai_
+- No deprecated WordPress functions
+- No direct database queries without $wpdb->prepare()
+- Output escaping:
+    - Plain text: esc_html()
+    - Attributes: esc_attr()
+    - URLs: esc_url()
+    - Rich content: wp_kses_post()
+    - Iframes / embeds: bonsai_kses_iframe() — defined in inc/helpers.php — use this, not esc_html() or wp_kses_post()
+    - Raw echo get_field() is never acceptable
+- Input sanitisation:
+    - Text: sanitize_text_field()
+    - Email: sanitize_email()
+    - Integers: absint()
+    - URLs: esc_url_raw()
+- Nonces + current_user_can() checks on all forms, AJAX handlers, and admin actions
+- ACF patterns:
+    - Always check field exists: if ( get_field('field_name') )
+    - Repeaters: check have_rows() before looping
+    - Flexible Content: use get_row_layout() in a switch
+    - Field naming: snake_case, descriptive (e.g. hero_title, hero_background_image)
+- DRY, modular, tab-indented code
+- Full files only — never deliver fragments unless explicitly asked for a snippet
+- No var_dump, die(), console.log, or commented-out blocks in committed code
+
+---
+
+[WOOCOMMERCE]
+- WooCommerce is likely active — confirm before overriding any templates
+- Template overrides go in /woocommerce/ folder in the child theme only [ASSUMED — no child theme confirmed]
+- Always use WooCommerce hooks and filters — never modify plugin files
+- The product-grid module displays featured WooCommerce product cards
+- Class booking may be handled via WooCommerce with a booking plugin or SiteMinder IBE [ASSUMED]
+
+---
+
+[SITEMINDER IBE — SPECIAL BEHAVIOUR]
+- SiteMinder booking widget (https://widget.siteminder.com/ibe.min.js) is enqueued only on is_singular('accommodation')
+- This implies an 'accommodation' custom post type exists or is planned [ASSUMED]
+- The script is deferred and loaded in the footer
+- Do not enqueue this script globally — it must remain conditional
+- This widget likely renders a booking form — confirm with Ben before adding any CPT or template for it
+
+---
+
+[UX, ACCESSIBILITY & SEO]
+- WCAG 2.1 AA target
+- All images must have descriptive alt text; decorative images use empty alt=""
+- Semantic HTML: use correct elements (section, article, nav, h1–h6 in logical order)
+- Single H1 per page — heading hierarchy must not skip levels
+- Focus states: :focus-visible used globally; do not remove or suppress
+- Touch targets: minimum 44px × 44px on mobile
+- Forms must have proper labels (not just placeholders)
+- Meta: title tags and descriptions managed via SEO plugin [ASSUMED — confirm Yoast or RankMath]
+- OG tags: confirm via SEO plugin
+- No non-semantic clickable divs — use <button> or <a>
+
+---
+
+[PERFORMANCE]
+- Module CSS is loaded on-demand only — do not move module styles to a global stylesheet
+- SiteMinder IBE is conditionally loaded — keep it that way
+- Images: use wp_get_attachment_image() with lazy loading (loading="eager" only on LCP hero image)
+- Slick carousel: only initialise when the carousel element is present — check selector before calling .slick()
+- AOS is disabled — leave it commented out unless there is a clear need and consent is confirmed
+- Do not introduce additional JS libraries without checking total bundle weight
+
+---
+
+[CHECKLIST REMINDERS]
+Pre-deploy test list:
+- Homepage: all five modules render correctly, hero image loads eagerly, CTAs link correctly
+- Shop: WooCommerce product listing and single product pages render without template conflicts
+- Class booking: booking flow works end-to-end
+- Gift voucher: purchase flow works
+- Cookie banner: Cookiebot active, no scripts fire before consent
+- Forms: contact form delivers to correct inbox; Cookiebot consent wrapper in place if third-party
+- 404: custom 404 page renders correctly
+- Mobile: all modules are responsive; navigation collapses correctly
+- Accessibility: run axe or Lighthouse accessibility audit before go-live
+- ACF JSON: all field groups are synced and committed
+
+Data / migration notes:
+- ACF field group changes must always be exported to /acf-json/ and committed
+- If renaming or deleting an ACF field, audit all templates that reference that field_name first
+- humans.txt writes to ABSPATH — confirm webroot write permissions on the live host
+
+---
+
+[LLM BEHAVIOUR]
+- Tone: Concise and practical. Assume the reader is a developer. No waffle.
+- Default assumptions: ACF Pro active, jQuery global, Gutenberg disabled, WooCommerce likely active
+- When generating PHP: show full files, escaped output, ACF existence checks, function prefix bonsai_
+- When generating CSS: use Fika design tokens (--accent, --surface, --ink, etc.), 14px border-radius, Varela Round for headings, Inter for body. Do not use base.css legacy variables for new work.
+- When generating copy: warm, unhurried, Scandinavian-minimal tone. UK English. No exclamation marks.
+- When uncertain: state your assumption explicitly with [ASSUMED], then proceed — do not ask before every decision
+- Locate all changes in the theme: state exactly which file to edit and where
+- Flag proactively: deprecated functions, missing escaping, consent issues, accessibility problems
+- Code output rules: tabs for indentation, Yoda conditions, spaces inside parentheses for control structures

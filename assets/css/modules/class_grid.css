@@ -1,0 +1,177 @@
+/**
+ * Class Grid Module
+ *
+ * Featured classes / workshops grid with image hover states.
+ * Styles for template-parts/modules/class-grid.php
+ */
+
+.section {
+	padding: 4rem 0;
+}
+
+.section-title {
+	font-family: var(--font-heading);
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
+	font-weight: 400;
+	text-align: center;
+	color: var(--ink-strong);
+	margin: 0 0 0.5rem;
+	letter-spacing: 0.02em;
+}
+
+.section-intro {
+	text-align: center;
+	color: var(--muted);
+	max-width: 36rem;
+	margin: 0 auto 2.5rem;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+/* Card grid layout */
+.card-grid {
+	display: grid;
+	gap: 1.75rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+	.card-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1000px) {
+	.card-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.class-card {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+	transition: transform 0.2s ease;
+}
+
+.class-card:hover {
+	transform: translateY(-2px);
+}
+
+.class-card figure {
+	margin: 0 0 0.75rem;
+	aspect-ratio: 1;
+	border-radius: var(--radius);
+	overflow: hidden;
+	background: var(--line);
+}
+
+.class-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.35s ease;
+	display: block;
+}
+
+.class-card:hover img {
+	transform: scale(1.03);
+}
+
+.class-card h3 {
+	font-family: var(--font-heading);
+	font-size: 1.1rem;
+	font-weight: 400;
+	margin: 0 0 0.35rem;
+	color: var(--ink-strong);
+}
+
+.class-meta {
+	font-size: 14px;
+	color: var(--muted);
+	margin: 0 0 0.75rem;
+	line-height: 1.5;
+}
+
+.class-card .btn {
+	margin-top: 0.5rem;
+	font-size: 14px;
+	padding: 0.55rem 1rem;
+}
+
+.section-cta {
+	text-align: center;
+	margin-top: 2.5rem;
+}
+
+/* Breakpoints */
+@media (max-width: 1536px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1366px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1280px) {
+	/* No changes needed */
+}
+
+@media (max-width: 992px) {
+	/* No changes needed */
+}
+
+@media (max-width: 768px) {
+	.section {
+		padding: 3rem 0;
+	}
+
+	.section-title {
+		margin-bottom: 0.5rem;
+	}
+
+	.section-intro {
+		margin-bottom: 2rem;
+		font-size: 0.95rem;
+	}
+
+	.card-grid {
+		gap: 1.5rem 1.25rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.section {
+		padding: 2.5rem 0;
+	}
+
+	.section-title {
+		font-size: 1.35rem;
+	}
+
+	.section-intro {
+		margin-bottom: 1.5rem;
+		font-size: 0.9rem;
+	}
+
+	.card-grid {
+		gap: 1.25rem 1rem;
+	}
+
+	.class-card figure {
+		margin-bottom: 0.5rem;
+	}
+
+	.class-card h3 {
+		font-size: 1rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.class-meta {
+		font-size: 12px;
+		margin-bottom: 0.5rem;
+	}
+
+	.section-cta {
+		margin-top: 1.75rem;
+	}
+}

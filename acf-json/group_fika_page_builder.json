@@ -1,0 +1,952 @@
+{
+    "key": "group_fika_page_builder",
+    "title": "Page Builder",
+    "fields": [
+        {
+            "key": "field_fika_page_builder",
+            "label": "Page Builder",
+            "name": "page_builder",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": [
+                {
+                    "key": "layout_fika_hero_split",
+                    "name": "hero_split",
+                    "label": "Hero Split",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fika_hs_kicker",
+                            "label": "Kicker",
+                            "name": "kicker",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Small text above the heading (e.g. “made with care”)",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "made with care",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_hs_heading",
+                            "label": "Main Heading",
+                            "name": "heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "Baking from the heart",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_hs_heading_accent_word",
+                            "label": "Accent Word",
+                            "name": "heading_accent_word",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Part of the heading to highlight in cinnamon brown — must match a word in the heading exactly",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "heart",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_hs_lead_text",
+                            "label": "Lead Paragraph",
+                            "name": "lead_text",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 3,
+                            "placeholder": "",
+                            "default_value": "",
+                            "new_lines": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_fika_hs_primary_cta_text",
+                            "label": "Primary CTA Text",
+                            "name": "primary_cta_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "Browse classes",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_hs_primary_cta_link",
+                            "label": "Primary CTA Link",
+                            "name": "primary_cta_link",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "https:\/\/",
+                            "default_value": ""
+                        },
+                        {
+                            "key": "field_fika_hs_secondary_cta_text",
+                            "label": "Secondary CTA Text",
+                            "name": "secondary_cta_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "Watch our story",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_hs_secondary_cta_link",
+                            "label": "Secondary CTA Link",
+                            "name": "secondary_cta_link",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "https:\/\/",
+                            "default_value": ""
+                        },
+                        {
+                            "key": "field_fika_hs_features",
+                            "label": "Feature Cards",
+                            "name": "features",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Optional: 1–3 small feature boxes shown beneath the CTAs",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "min": 0,
+                            "max": 3,
+                            "layout": "table",
+                            "button_label": "Add feature",
+                            "rows_per_page": 20,
+                            "collapsed": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_fika_hs_feature_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "calendar": "Calendar",
+                                        "location": "Location",
+                                        "chart": "Chart \/ Data"
+                                    },
+                                    "default_value": "calendar",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "create_options": 0,
+                                    "save_options": 0,
+                                    "parent_repeater": "field_fika_hs_features"
+                                },
+                                {
+                                    "key": "field_fika_hs_feature_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "Small groups",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_fika_hs_features"
+                                },
+                                {
+                                    "key": "field_fika_hs_feature_description",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "Max 8 per class",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_fika_hs_features"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_fika_hs_hero_image",
+                            "label": "Hero Image",
+                            "name": "hero_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Recommended: 1400×1050px (4:3). Will be cropped with an organic shape.",
+                            "required": 1,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "layout_fika_services_row",
+                    "name": "services_row",
+                    "label": "Services Row",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fika_services",
+                            "label": "Services",
+                            "name": "services",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Add up to 3 service blocks",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "min": 1,
+                            "max": 3,
+                            "layout": "table",
+                            "button_label": "Add service",
+                            "rows_per_page": 20,
+                            "collapsed": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_fika_service_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "Classes",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_fika_services"
+                                },
+                                {
+                                    "key": "field_fika_service_description",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "rows": 3,
+                                    "placeholder": "From enriched doughs to pastry basics...",
+                                    "default_value": "",
+                                    "new_lines": "",
+                                    "maxlength": "",
+                                    "parent_repeater": "field_fika_services"
+                                },
+                                {
+                                    "key": "field_fika_service_link_text",
+                                    "label": "Link Text",
+                                    "name": "link_text",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "See all workshops",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_fika_services"
+                                },
+                                {
+                                    "key": "field_fika_service_link_url",
+                                    "label": "Link URL",
+                                    "name": "link_url",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "https:\/\/",
+                                    "default_value": "",
+                                    "parent_repeater": "field_fika_services"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "layout_fika_class_grid",
+                    "name": "class_grid",
+                    "label": "Class Grid",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fika_class_section_title",
+                            "label": "Section Title",
+                            "name": "section_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "Upcoming classes",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_class_section_intro",
+                            "label": "Section Intro",
+                            "name": "section_intro",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "placeholder": "A few seats left on these dates...",
+                            "default_value": "",
+                            "new_lines": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_fika_classes",
+                            "label": "Classes",
+                            "name": "classes",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Add featured classes (2–3 recommended)",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "min": 1,
+                            "max": 0,
+                            "layout": "table",
+                            "button_label": "Add class",
+                            "rows_per_page": 20,
+                            "collapsed": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_fika_class_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "id",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": 0,
+                                    "min_height": 0,
+                                    "min_size": 0,
+                                    "max_width": 0,
+                                    "max_height": 0,
+                                    "max_size": 0,
+                                    "mime_types": "",
+                                    "parent_repeater": "field_fika_classes"
+                                },
+                                {
+                                    "key": "field_fika_class_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "Nordic enriched dough",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_fika_classes"
+                                },
+                                {
+                                    "key": "field_fika_class_meta",
+                                    "label": "Meta (date, time, price)",
+                                    "name": "meta",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "Sat 14 June · 10:00–15:00 · £95",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_fika_classes"
+                                },
+                                {
+                                    "key": "field_fika_class_cta_text",
+                                    "label": "CTA Text",
+                                    "name": "cta_text",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "Book",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_fika_classes"
+                                },
+                                {
+                                    "key": "field_fika_class_link",
+                                    "label": "Class Link",
+                                    "name": "link",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "https:\/\/",
+                                    "default_value": "",
+                                    "parent_repeater": "field_fika_classes"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_fika_class_view_all_link",
+                            "label": "View All Link",
+                            "name": "view_all_link",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "Link to full classes archive \/ calendar",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "https:\/\/",
+                            "default_value": ""
+                        },
+                        {
+                            "key": "field_fika_class_view_all_text",
+                            "label": "View All Text",
+                            "name": "view_all_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "View full calendar",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "layout_fika_product_grid",
+                    "name": "product_grid",
+                    "label": "Product Grid",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fika_product_section_title",
+                            "label": "Section Title",
+                            "name": "section_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "From the shop",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_product_section_intro",
+                            "label": "Section Intro",
+                            "name": "section_intro",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "placeholder": "Pantry picks...",
+                            "default_value": "",
+                            "new_lines": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_fika_product_background",
+                            "label": "Background Style",
+                            "name": "background_style",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "Default (surface)",
+                                "raised": "Raised (surface-raised with border)"
+                            },
+                            "default_value": "raised",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_fika_products",
+                            "label": "Products",
+                            "name": "products",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Add featured products (3 recommended)",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "min": 1,
+                            "max": 0,
+                            "layout": "table",
+                            "button_label": "Add product",
+                            "rows_per_page": 20,
+                            "collapsed": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_fika_product_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "id",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": 0,
+                                    "min_height": 0,
+                                    "min_size": 0,
+                                    "max_width": 0,
+                                    "max_height": 0,
+                                    "max_size": 0,
+                                    "mime_types": "",
+                                    "parent_repeater": "field_fika_products"
+                                },
+                                {
+                                    "key": "field_fika_product_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "Local wildflower honey",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_fika_products"
+                                },
+                                {
+                                    "key": "field_fika_product_price",
+                                    "label": "Price",
+                                    "name": "price",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "£8.50",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_fika_products"
+                                },
+                                {
+                                    "key": "field_fika_product_link",
+                                    "label": "Product Link",
+                                    "name": "link",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "https:\/\/",
+                                    "default_value": "",
+                                    "parent_repeater": "field_fika_products"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_fika_product_view_all_link",
+                            "label": "View All Link",
+                            "name": "view_all_link",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "Link to full shop \/ WooCommerce archive",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "https:\/\/",
+                            "default_value": ""
+                        },
+                        {
+                            "key": "field_fika_product_view_all_text",
+                            "label": "View All Text",
+                            "name": "view_all_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "View all products",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "layout_fika_story_block",
+                    "name": "story_block",
+                    "label": "Story Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fika_story_quote",
+                            "label": "Quote Text",
+                            "name": "quote_text",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 4,
+                            "placeholder": "I started Fika to share the recipes I grew up with...",
+                            "default_value": "",
+                            "new_lines": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_fika_story_background",
+                            "label": "Background Style",
+                            "name": "background_style",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "Default (surface)",
+                                "raised": "Raised (surface-raised)"
+                            },
+                            "default_value": "default",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            ],
+            "button_label": "Add block",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "slug",
+        "format"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1778744176
+}

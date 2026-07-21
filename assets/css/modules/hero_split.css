@@ -1,0 +1,242 @@
+/**
+ * Hero Split Module
+ *
+ * Organic split layout with clipped imagery.
+ * Styles for template-parts/modules/hero-split.php
+ */
+
+.hero {
+	position: relative;
+	/*padding-bottom: 3rem;*/
+	overflow: hidden;
+}
+
+.hero-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	min-height: min(88vh, 52rem);
+}
+
+.hero-media {
+	order: -1;
+}
+
+.hero-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2.5rem 0 2rem;
+	width: min(100% - 2.5rem, var(--max-w));
+	margin-inline: auto;
+	position: relative;
+	z-index: 2;
+}
+
+.hero-kicker {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-family: var(--font-script);
+	font-size: clamp(1.35rem, 2.5vw, 1.6rem);
+	color: var(--accent);
+	margin: 0 0 0.75rem;
+}
+
+.hero-kicker svg {
+	flex-shrink: 0;
+	opacity: 0.85;
+}
+
+.hero h1 {
+	font-family: var(--font-heading);
+	font-weight: 400;
+	font-size: clamp(2rem, 4.5vw, 2.85rem);
+	line-height: 1.12;
+	letter-spacing: 0.02em;
+	color: var(--ink-strong);
+	margin: 0 0 1rem;
+}
+
+.hero h1 .accent-word {
+	color: var(--accent);
+}
+
+.hero-lead {
+	margin: 0 0 1.75rem;
+	max-width: 28rem;
+	color: var(--muted);
+	font-size: 1rem;
+}
+
+.hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1rem 1.5rem;
+	margin-bottom: 2.5rem;
+}
+
+/* Feature mini-cards */
+.hero-features {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.75rem;
+	margin-top: auto;
+}
+
+.feature-card {
+	background: var(--surface-raised);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	padding: 1rem 1rem 1.1rem;
+	box-shadow: var(--shadow-soft);
+}
+
+.feature-card h3 {
+	font-family: var(--font-heading);
+	font-size: 1rem;
+	margin: 0.35rem 0 0.25rem;
+	color: var(--ink-strong);
+}
+
+.feature-card p {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: var(--muted);
+}
+
+.feature-icon {
+	width: 28px;
+	height: 28px;
+	color: var(--accent);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.feature-icon svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* Hero media + organic clip */
+.hero-media {
+	position: relative;
+	min-height: 16rem;
+	margin-inline: -1.25rem;
+}
+
+.hero-media-inner {
+	position: absolute;
+	inset: 0;
+	clip-path: url(#organicHero);
+}
+
+.hero-media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.hero-leaf {
+	position: absolute;
+	top: 1rem;
+	left: 4%;
+	width: clamp(4rem, 12vw, 7rem);
+	height: auto;
+	z-index: 3;
+	color: var(--sage);
+	pointer-events: none;
+	opacity: 0.9;
+}
+
+/* Desktop layout */
+@media (min-width: 900px) {
+	.hero-grid {
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		align-items: stretch;
+	}
+
+	.hero-media {
+		order: 0;
+		margin-inline: 0;
+		min-height: 100%;
+	}
+
+	.hero-content {
+		width: 100%;
+		max-width: 34rem;
+		margin-inline: 0;
+		margin-left: max(1.25rem, calc(50vw - var(--max-w) / 2));
+		padding: 3rem 0 3.5rem;
+	}
+
+	.hero-leaf {
+		left: -2rem;
+		top: 2rem;
+	}
+
+	.hero-features {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* Tablet breakpoints */
+@media (max-width: 1536px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1366px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1280px) {
+	/* No changes needed */
+}
+
+@media (max-width: 992px) {
+	/* No changes needed */
+}
+
+@media (max-width: 768px) {
+	.hero {
+		padding-bottom: 2rem;
+	}
+
+	.hero-content {
+		padding: 2rem 0 1.5rem;
+	}
+
+	.hero-media {
+		min-height: 14rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.hero-content {
+		padding: 1.5rem 0 1rem;
+	}
+
+	.hero-lead {
+		margin-bottom: 1.25rem;
+	}
+
+	.hero-actions {
+		gap: 0.75rem 1rem;
+		margin-bottom: 1.75rem;
+	}
+
+	.hero-features {
+		gap: 0.5rem;
+	}
+
+	.feature-card {
+		padding: 0.75rem;
+	}
+
+	.hero-media {
+		min-height: 12rem;
+	}
+}

@@ -1,0 +1,72 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+- [acf-json/group_fika_page_builder.json] Consolidated all five module layouts (hero_split, services_row, class_grid, product_grid, story_block) into a single ACF Flexible Content field group assigned to post_type == page
+
+### Changed
+- [inc/assets.php] Corrected Google Fonts URL from Cormorant Garamond to the Fika spec fonts: Varela Round + Inter (400, 500, 600)
+
+### Fixed
+-
+
+### Removed
+- [acf-json/] Deleted four separate ACF field group files (group_fika_services_row, group_fika_class_grid, group_fika_product_grid, group_fika_story_block) — layouts now live inside group_fika_page_builder
+
+### Security
+-
+
+---
+
+## [1.0.0] - 14-05-2026
+
+### Added
+- [functions.php] Modular loader architecture — all theme functionality split into discrete inc/ files
+- [inc/theme-setup.php] Theme supports registered: title-tag, post-thumbnails, automatic-feed-links, responsive-embeds, html5
+- [inc/theme-setup.php] Four nav menus registered: Primary, Mobile, Footer, Legal
+- [inc/assets.php] Enqueue pipeline for Bootstrap 5 (custom build), Slick carousel, FontAwesome 6 Free, Google Fonts (Varela Round + Inter), and main.js
+- [inc/assets.php] Conditional SiteMinder IBE booking widget enqueue — loads only on is_singular('accommodation'), deferred
+- [inc/acf.php] ACF options pages: Site Settings and Humans.txt Editor
+- [inc/acf.php] Humans.txt writer — acf/save_post hook writes 'humans_txt_content' field value to /humans.txt on options save
+- [inc/acf-json.php] ACF Local JSON save and load paths configured to /acf-json/
+- [inc/acf-defaults.php] Auto-population of page_builder field on new posts
+- [inc/helpers.php] bonsai_kses_iframe() helper for safe iframe/embed output from ACF fields
+- [inc/helpers.php] bonsai_get_trimmed_excerpt() and bonsai_get_trimmed_content() helper functions
+- [inc/gutenberg.php] Gutenberg block editor disabled sitewide
+- [inc/post-labels.php] 'Posts' post type renamed to 'News' throughout the admin
+- [inc/security.php] Security hardening: version string removal, feed protection, and related cleanup
+- [inc/cleanup.php] Emoji scripts and unused WordPress head items removed
+- [inc/lazy-load.php] Lazy loading attribute added automatically to images
+- [inc/webp.php] WebP image upload support added
+- [template-parts/modules/page-builder.php] Child-aware ACF Flexible Content dispatcher — loads module CSS and PHP child-first, falls back to parent
+- [template-parts/modules/hero-split.php] Hero Split module — organic split layout, text left, clipped image right, optional feature cards
+- [template-parts/modules/services-row.php] Services Row module — three-column service blocks for Classes, Shop, and Gift Vouchers
+- [template-parts/modules/class-grid.php] Class Grid module — cookery class cards with booking CTA
+- [template-parts/modules/product-grid.php] Product Grid module — featured WooCommerce product cards
+- [template-parts/modules/story-block.php] Story Block module — blockquote/testimonial with decorative divider, variable background style
+- [acf-json/] Five ACF field groups added for all Flexible Content layouts: hero_split, services_row, class_grid, product_grid, story_block
+- [assets/css/core/] Global stylesheet suite: base.css (reset, CSS variables, base elements), header.css, footer.css, additions.css
+- [assets/css/modules/] Per-module CSS files for all five layouts, loaded on-demand by page-builder.php
+- [assets/css/] Bootstrap 5 custom build (bootstrap-custom.min.css) and Slick carousel stylesheet
+- [templates/] Root-level templates: page.php, single.php, single-campaign.php
+- [template-parts/] Header, footer, content, and snippet partials
+- Fika Exeter design system implemented: cinnamon accent (#6E4518), warm surface (#F5F3F2), Varela Round headings, Inter body, 14px border-radius
+
+### Changed
+- N/A — first release.
+
+### Fixed
+- N/A — first release.
+
+### Removed
+- N/A — first release.
+
+### Security
+- All template output escaped using esc_html(), esc_attr(), esc_url(), wp_kses_post(), or bonsai_kses_iframe() as appropriate
+- No unescaped ACF field output in any module template

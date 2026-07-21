@@ -1,0 +1,54 @@
+# ============================================================
+# fika-bonsai — .gitignore
+# Scoped to the theme directory.
+# ============================================================
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# --- Node / build tooling (not used, but safe to exclude) ---
+node_modules/
+npm-debug.log*
+yarn-error.log
+.npm
+.yarn
+
+# --- Compiled / generated assets (not applicable — plain CSS/JS) ---
+# dist/
+
+# --- Environment / secrets ---
+.env
+.env.*
+wp-config.php
+auth.json
+
+# --- Local dev ---
+*.log
+*.cache
+.sass-cache/
+
+# --- Uploads (never commit media) ---
+assets/uploads/
+uploads/
+
+# --- Backups ---
+*.bak
+*.backup
+*.zip
+*.tar.gz
+
+# --- PHPUnit / testing ---
+.phpunit.result.cache
+/tests/coverage/
+
+# --- ACF: DO commit /acf-json/ — it is the source of truth ---
+# (no rule here — keep all .json files in acf-json/ tracked)
