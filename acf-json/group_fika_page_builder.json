@@ -913,6 +913,237 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                {
+                    "key": "layout_fika_slider_module",
+                    "name": "slider_module",
+                    "label": "Slider",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fika_slider_slides",
+                            "label": "Slides",
+                            "name": "slides",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Each slide fades into the next. Image is required; title and content are optional for image-only slides.",
+                            "required": 1,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "min": 1,
+                            "max": 0,
+                            "collapsed": "field_fika_slider_slide_title",
+                            "button_label": "Add Slide",
+                            "sub_fields": [
+                                {
+                                    "key": "field_fika_slider_slide_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "Recommended 1920×800px landscape.",
+                                    "required": 1,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "preview_size": "medium"
+                                },
+                                {
+                                    "key": "field_fika_slider_slide_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Optional — leave blank for an image-only slide.",
+                                    "required": 0,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_fika_slider_slide_content",
+                                    "label": "Content",
+                                    "name": "content",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "rows": 3,
+                                    "placeholder": "",
+                                    "default_value": "",
+                                    "new_lines": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_fika_slider_slide_cta_text",
+                                    "label": "CTA Text",
+                                    "name": "cta_text",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Optional button label — requires CTA Link to display.",
+                                    "required": 0,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "Find out more",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_fika_slider_slide_cta_link",
+                                    "label": "CTA Link",
+                                    "name": "cta_link",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "layout_fika_contact_module",
+                    "name": "contact_module",
+                    "label": "Contact",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fika_contact_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Full-width heading above the content/form split.",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "Get in touch",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_contact_content",
+                            "label": "Content",
+                            "name": "content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Left column.",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_fika_contact_form_shortcode",
+                            "label": "Form Shortcode",
+                            "name": "form_shortcode",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Right column. Paste the shortcode from your form plugin, e.g. [contact-form-7 id=\"1\"]",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "[contact-form-7 id=\"1\"]",
+                            "default_value": "",
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fika_contact_background",
+                            "label": "Background Style",
+                            "name": "background_style",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "Default (surface)",
+                                "raised": "Raised (surface-raised)"
+                            },
+                            "default_value": "default",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ],
             "button_label": "Add block",
@@ -948,5 +1179,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778744176
+    "modified": 1784622600
 }

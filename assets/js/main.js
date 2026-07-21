@@ -119,6 +119,26 @@
       ]
     });
 
+    // slider_module
+    $('.slider-module-track').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: true,
+      fade: true,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 6000,
+      speed: 600,
+      adaptiveHeight: false,
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: { arrows: false }
+        }
+      ]
+    });
+
     // Content_introduction_module slider
 
     $('.featured-gateway').slick({

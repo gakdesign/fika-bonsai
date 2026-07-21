@@ -1,0 +1,114 @@
+/**
+ * Contact Module
+ *
+ * Full-width title, then a 50/50 split of content (left) and a form
+ * shortcode (right).
+ * Styles for template-parts/modules/contact_module.php
+ */
+
+.contact-module {
+	background: var(--surface);
+	padding: 4rem 0;
+}
+
+.contact-module-raised {
+	background: var(--surface-raised);
+}
+
+.contact-module-title {
+	font-family: var(--font-heading);
+	font-weight: 400;
+	font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+	color: var(--ink-strong);
+	margin: 0 0 2.5rem;
+	text-align: center;
+}
+
+.contact-module-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2.5rem;
+}
+
+.contact-module-content {
+	color: var(--ink);
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+.contact-module-content h1,
+.contact-module-content h2,
+.contact-module-content h3 {
+	font-family: var(--font-heading);
+	color: var(--ink-strong);
+}
+
+.contact-module-content a {
+	color: var(--accent);
+}
+
+.contact-module-content a:hover {
+	color: var(--accent-hover);
+}
+
+.contact-module-form {
+	background: var(--surface-raised);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	padding: 2rem;
+	box-shadow: var(--shadow-soft);
+}
+
+/* Desktop 50/50 split */
+@media (min-width: 900px) {
+	.contact-module-grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: start;
+	}
+}
+
+/* Breakpoints */
+@media (max-width: 1536px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1366px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1280px) {
+	/* No changes needed */
+}
+
+@media (max-width: 992px) {
+	/* No changes needed */
+}
+
+@media (max-width: 768px) {
+	.contact-module {
+		padding: 3rem 0;
+	}
+
+	.contact-module-title {
+		margin-bottom: 2rem;
+	}
+
+	.contact-module-form {
+		padding: 1.5rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.contact-module {
+		padding: 2.5rem 0;
+	}
+
+	.contact-module-grid {
+		gap: 2rem;
+	}
+
+	.contact-module-form {
+		padding: 1.25rem;
+	}
+}

@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - [acf-json/group_fika_page_builder.json] Consolidated all five module layouts (hero_split, services_row, class_grid, product_grid, story_block) into a single ACF Flexible Content field group assigned to post_type == page
+- [template-parts/modules/slider_module.php] Added Slider module: fade transition, 800px max-height, repeater of slides (image, optional title/content/CTA) with a left-aligned 60%-width overlay (title top, content bottom)
+- [assets/css/modules/slider_module.css] Added slider module styles, including mobile breakpoints
+- [assets/js/main.js] Added Slick init for `.slider-module-track` (fade, autoplay 6s, arrows + dots)
+- [template-parts/modules/contact_module.php] Added Contact module: full-width title, then 50/50 split of WYSIWYG content (left) and a form shortcode field (right)
+- [assets/css/modules/contact_module.css] Added contact module styles — stacked on mobile, 50/50 from 900px, raised card styling on the form column
 
 ### Changed
 - [inc/assets.php] Corrected Google Fonts URL from Cormorant Garamond to the Fika spec fonts: Varela Round + Inter (400, 500, 600)

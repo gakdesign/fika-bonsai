@@ -11,6 +11,8 @@ Five new ACF-compatible modules have been created from the design prototype:
 | **Class Grid** | `class-grid.php` | Featured classes with images, dates, prices, and booking CTA |
 | **Product Grid** | `product-grid.php` | Featured shop products with prices |
 | **Story Block** | `story-block.php` | Blockquote / testimonial with decorative divider |
+| **Slider** | `slider_module.php` | Full-width fade slider (max-height 800px) with optional title/content/CTA overlay per slide |
+| **Contact** | `contact_module.php` | Full-width title, then 50/50 split: rich content (left) and a form shortcode (right) |
 
 ## Setup Steps
 
@@ -135,6 +137,30 @@ In the page builder (Flexible Content field):
 |-------|------|----------|-------|
 | Quote Text | Textarea | **Yes** | Main blockquote text |
 | Background Style | Select | No | "Default" (surface) or "Raised" |
+
+### Slider
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Slides (Repeater) | — | **Yes**, min 1 | Each slide fades into the next |
+| — Image | Image | **Yes** | Recommended 1920×800px landscape |
+| — Title | Text | No | Top of the overlay; blank = image-only slide |
+| — Content | Textarea | No | Bottom of the overlay, above the CTA |
+| — CTA Text | Text | No | Requires CTA Link to display |
+| — CTA Link | URL | No | — |
+
+Overlay is left-aligned, 60% width, title pinned top / content + CTA pinned bottom. Slider is Slick-powered (`fade: true`, autoplay 6s, arrows + dots) — see `.slider-module-track` init in `assets/js/main.js`. Section height is capped with `max-height: 800px` (see `assets/css/modules/slider_module.css`).
+
+### Contact
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Title | Text | No | Full-width heading above the split |
+| Content | WYSIWYG (basic toolbar) | No | Left column — bold, links, lists |
+| Form Shortcode | Text | No | Right column — paste the shortcode from any form plugin, e.g. `[contact-form-7 id="1"]`. No form plugin is currently installed on this site, so add one before the shortcode will render anything |
+| Background Style | Select | No | "Default" (surface) or "Raised" (surface-raised) |
+
+Stacks on mobile/tablet, splits 50/50 from 900px up. The form column is styled as a raised card (`--surface-raised`, `--line` border) regardless of the module's own background style, so the form reads clearly against either background.
 
 ## Design System Reference
 
