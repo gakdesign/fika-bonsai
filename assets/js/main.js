@@ -139,6 +139,20 @@
       ]
     });
 
+    // testimonials_carousel
+    $('.testimonials-carousel-track').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: true,
+      fade: true,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 7000,
+      speed: 500,
+      adaptiveHeight: true
+    });
+
     // Content_introduction_module slider
 
     $('.featured-gateway').slick({

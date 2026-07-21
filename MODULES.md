@@ -14,6 +14,12 @@ Five new ACF-compatible modules have been created from the design prototype:
 | **Slider** | `slider_module.php` | Full-width fade slider (max-height 800px) with optional title/content/CTA overlay per slide |
 | **Contact** | `contact_module.php` | Full-width title, then 50/50 split: rich content (left) and a form shortcode (right) |
 | **Split Content** | `split_content_module.php` | Full-width title, then a left/right split; each side is independently Text+CTA, Image, or Video |
+| **FAQ Accordion** | `faq_accordion.php` | Repeater of question/answer pairs using native `<details>`/`<summary>` — no JS |
+| **Testimonials Carousel** | `testimonials_carousel.php` | Repeater of quotes rotated with a Slick fade carousel |
+| **Stats Strip** | `stats_strip.php` | Auto-fit row of number + label stats (2–5 items) |
+| **Map / Location** | `map_location.php` | Address, phone, opening hours table, and a "Get Directions" link — no embedded map, so no consent-wrapping needed |
+| **CTA Banner** | `cta_banner.php` | Full-width heading + button on an accent-colour or image background |
+| **Logo Strip** | `logo_strip.php` | "As featured in" / press logos row, greyscale until hover |
 
 ## Setup Steps
 
@@ -191,6 +197,79 @@ Stacks on mobile/tablet, splits 50/50 from 900px up. The form column is styled a
 | — Video URL | oEmbed | Video type | Paste a YouTube or Vimeo link; rendered via `bonsai_kses_iframe()` |
 
 Stacks on mobile/tablet, splits 50/50 from 900px up. Video embeds should be checked against the Cookiebot consent rules in `~/.claude/agents/compliance-checker.md` before go-live — YouTube/Vimeo iframes need consent wrapping.
+
+### FAQ Accordion
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Section Title | Text | No | e.g. "Frequently asked questions" |
+| Questions (Repeater) | — | **Yes**, min 1 | — |
+| — Question | Text | **Yes** | — |
+| — Answer | WYSIWYG (basic toolbar) | **Yes** | — |
+
+Uses native `<details>`/`<summary>` — accessible and keyboard-operable with zero JS.
+
+### Testimonials Carousel
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Section Title | Text | No | e.g. "What people say" |
+| Testimonials (Repeater) | — | **Yes**, min 1 | — |
+| — Quote | Textarea | **Yes** | — |
+| — Name | Text | **Yes** | — |
+| — Role / Company | Text | No | — |
+
+Slick fade carousel (`.testimonials-carousel-track` init in `main.js`) — autoplay 7s, dots only, adaptive height for varying quote lengths.
+
+### Stats Strip
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Section Title | Text | No | Optional |
+| Stats (Repeater) | — | **Yes**, min 2, max 5 | — |
+| — Number | Text | **Yes** | e.g. "500+" |
+| — Label | Text | **Yes** | e.g. "Loaves baked" |
+
+Auto-fit grid — lays out evenly for 2–5 items without a fixed column count.
+
+### Map / Location
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Section Title | Text | No | e.g. "Find us" |
+| Address | Textarea | No | Line breaks preserved |
+| Get Directions Link | URL | No | Links out to Google/Apple Maps |
+| Phone | Text | No | Rendered as a `tel:` link |
+| Opening Hours (Repeater) | — | No, max 7 | — |
+| — Day | Text | **Yes** | e.g. "Monday" |
+| — Hours | Text | No | e.g. "8:00 – 15:00" or "Closed" |
+
+Deliberately has **no embedded map iframe** — address + directions link only, so there's nothing to consent-wrap for Cookiebot. If a client later wants a visual embedded map, that would need its own iframe field wrapped per the compliance-checker agent's Cookiebot rules.
+
+### CTA Banner
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Heading | Text | **Yes** | e.g. "Book your next workshop" |
+| Subtext | Text | No | — |
+| Button Text | Text | **Yes** | — |
+| Button Link | URL | **Yes** | — |
+| Background Type | Select | No | "Colour (Accent)" (default) or "Background Image" |
+| Background Image | Image | Background Type = Image | — |
+
+Solid-colour mode uses `--accent`; image mode adds a dark overlay for text contrast.
+
+### Logo Strip
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| Section Title | Text | No | e.g. "As featured in" |
+| Logos (Repeater) | — | **Yes**, min 1 | — |
+| — Logo | Image | **Yes** | — |
+| — Name | Text | **Yes** | Used for alt text |
+| — Link | URL | No | Opens in a new tab if set |
+
+Logos render greyscale at low opacity, returning to full colour on hover/focus.
 
 ## Design System Reference
 

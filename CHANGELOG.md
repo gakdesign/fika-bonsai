@@ -17,6 +17,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [template-parts/modules/split_content_module.php] Added Split Content module: full-width title, then a left/right split where each side is independently Text+CTA, Image, or Video, with reverse-order and vertical-align (top/center) options
 - [assets/css/modules/split_content_module.css] Added split content module styles, including reversed order and vertical-centering modifiers
 - [acf-json/group_fika_market_workshop_details.json] Added "Market / Workshop Details" field group (post_type == market OR workshop): Date, Time, Price, Location, Book Link, Spots Remaining, Sold Out, Image, Description
+- [template-parts/modules/faq_accordion.php] Added FAQ Accordion module — repeater of question/answer pairs using native `<details>`/`<summary>`, no JS
+- [template-parts/modules/testimonials_carousel.php] Added Testimonials Carousel module — repeater of quotes rotated with a Slick fade carousel
+- [assets/js/main.js] Added Slick init for `.testimonials-carousel-track` (fade, autoplay 7s, dots, adaptive height)
+- [template-parts/modules/stats_strip.php] Added Stats Strip module — auto-fit row of 2–5 number/label stats
+- [template-parts/modules/map_location.php] Added Map / Location module — address, phone, opening hours table, and a directions link (no embedded map, so no Cookiebot wrapping needed)
+- [template-parts/modules/cta_banner.php] Added CTA Banner module — full-width heading + button on an accent-colour or image background
+- [template-parts/modules/logo_strip.php] Added Logo Strip module — "as featured in" press logos row, greyscale until hover
+- [assets/css/modules/] Added faq_accordion.css, testimonials_carousel.css, stats_strip.css, map_location.css, cta_banner.css, logo_strip.css
 
 ### Changed
 - [acf-json/group_fika_page_builder.json] Class Grid's "Classes" field changed from a manual repeater to a Relationship field (max 3) selecting `market`/`workshop` posts
