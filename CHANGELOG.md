@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [assets/css/modules/contact_module.css] Added contact module styles — stacked on mobile, 50/50 from 900px, raised card styling on the form column
 - [template-parts/modules/split_content_module.php] Added Split Content module: full-width title, then a left/right split where each side is independently Text+CTA, Image, or Video, with reverse-order and vertical-align (top/center) options
 - [assets/css/modules/split_content_module.css] Added split content module styles, including reversed order and vertical-centering modifiers
+- [acf-json/group_fika_market_workshop_details.json] Added "Market / Workshop Details" field group (post_type == market OR workshop): Date, Time, Price, Location, Book Link, Spots Remaining, Sold Out, Image, Description
 
 ### Changed
 - [inc/assets.php] Corrected Google Fonts URL from Cormorant Garamond to the Fika spec fonts: Varela Round + Inter (400, 500, 600)
