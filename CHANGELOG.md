@@ -25,6 +25,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [template-parts/modules/cta_banner.php] Added CTA Banner module — full-width heading + button on an accent-colour or image background
 - [template-parts/modules/logo_strip.php] Added Logo Strip module — "as featured in" press logos row, greyscale until hover
 - [assets/css/modules/] Added faq_accordion.css, testimonials_carousel.css, stats_strip.css, map_location.css, cta_banner.css, logo_strip.css
+- [assets/fonts/glacial-indifference/] Added folder + README for self-hosting the licensed Glacial Indifference font files (not on Google Fonts)
+
+### Changed
+- [assets/css/core/additions.css] Site-wide typography swap: `--font-heading` changed from Varela Round to Poppins (headings, nav, buttons), `--font-body` changed from Inter to Glacial Indifference (general site text, self-hosted `@font-face`, falls back to system-ui until font files are supplied)
+- [assets/css/core/additions.css] `--ink-strong` (headings/buttons) changed from `#1A1A1A` to `rgba(0, 0, 0, 0.7)`; `--ink` (body text) changed from `#2B2B2B` to `#999999`
+- [assets/css/core/additions.css] `.btn` font-family changed from `--font-body` to `--font-heading` (Poppins) per updated brand direction
+- [inc/assets.php] Google Fonts enqueue updated to Poppins + Caveat (Varela Round and Inter removed)
+- [DESIGN.md] Updated typography section and CSS variable reference to match
 
 ### Changed
 - [acf-json/group_fika_page_builder.json] Class Grid's "Classes" field changed from a manual repeater to a Relationship field (max 3) selecting `market`/`workshop` posts

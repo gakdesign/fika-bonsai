@@ -34,8 +34,8 @@ Use **only** this family for interactive emphasis (links, focus, primary buttons
 |-------|------|--------|
 | `--surface` | Page background | `#F5F3F2` (warm off-white; adjust to pure `#FAFAF8` if photography skews yellow) |
 | `--surface-raised` | Cards, modals, sticky bars | `#FFFFFF` at 85–100% opacity, or solid `#FFFCFA` |
-| `--ink` | Body text | `#2B2B2B` |
-| `--ink-strong` | Headings, prices | `#1A1A1A` |
+| `--ink` | Body text | `#999999` (light grey, for Glacial Indifference body copy) |
+| `--ink-strong` | Headings, buttons, prices | `rgba(0, 0, 0, 0.7)` (black at 70% opacity) |
 | `--muted` | Meta, captions, disabled | `#6B6B6B` |
 | `--line` | Dividers, input borders | `#E6E4E1` |
 | `--accent` | Primary links, focus ring, icon emphasis | `#6E4518` |
@@ -53,19 +53,17 @@ Use **only** this family for interactive emphasis (links, focus, primary buttons
 
 ## 3. Typography
 
-Mirror the Scandinavian pairing from the NKS reference: **rounded friendly display + neutral workhorse body**.
-
 | Role | Font | Notes |
 |------|------|--------|
-| Display / H1–H3 | **Varela Round** | Matches the soft, lowercase “fika” logo personality. No real bold — use size and letter-spacing (`0.02em` on large headings) for hierarchy. |
-| Body, UI, nav, forms | **Inter** | 400 body; 500–600 for buttons and active nav. |
+| Display / H1–H6, buttons, nav | **Poppins** | Google Font — colour `--ink-strong` (black at 70% opacity). Weights 400/500/600/700. |
+| Body copy, general site text | **Glacial Indifference** | Self-hosted (not on Google Fonts) — colour `--ink` (light grey `#999999`). Regular 400 + Bold 700; falls back to `system-ui, sans-serif` until the licensed font files are added to `assets/fonts/glacial-indifference/` (see README in that folder). |
 
-**Google Fonts embed**
+**Google Fonts embed** (Poppins only — Glacial Indifference is self-hosted via `@font-face` in `assets/css/core/additions.css`)
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Varela+Round&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 ```
 
 **Scale (desktop baseline)**
@@ -168,8 +166,8 @@ Search: icon in header opening a minimal full-width or overlay field — Inter, 
 :root {
   --surface: #F5F3F2;
   --surface-raised: #FFFCFA;
-  --ink: #2B2B2B;
-  --ink-strong: #1A1A1A;
+  --ink: #999999;
+  --ink-strong: rgba(0, 0, 0, 0.7);
   --muted: #6B6B6B;
   --line: #E6E4E1;
   /* Accent: cinnamon — single UI emphasis family */
@@ -177,8 +175,8 @@ Search: icon in header opening a minimal full-width or overlay field — Inter, 
   --accent-hover: #543210;
   --on-accent: #fffcfa;
   --accent-soft: color-mix(in srgb, var(--accent) 12%, var(--surface));
-  --font-heading: 'Varela Round', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Glacial Indifference', system-ui, sans-serif;
   --radius: 14px;
   --max-w: 72rem;
 }
