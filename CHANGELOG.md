@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- [acf-json/group_fika_page_builder.json] Added four new page_builder layouts: banner_module (background image + title + subheader + single CTA), media_module (full-width image or YouTube/Vimeo video via ACF oEmbed), event_details_module and workshop_details_module (auto-pull date/time/location/price/description/booking from the current Market/Workshop post's own fields, each with an optional no-API-key Google Map embed)
+- [template-parts/modules/banner_module.php, media_module.php, event_details_module.php, workshop_details_module.php] Added matching PHP templates
+- [assets/css/modules/banner_module.css, media_module.css, event_details_module.css, workshop_details_module.css] Added matching module styles
+- [acf-json/group_fika_page_builder.json] Added `market` and `workshop` to the page_builder field group's location rules (previously `page` only) — Page Builder is now available when editing a Market or Workshop post
+
+### Fixed
+- [template-parts/content/content-single.php, content-campaign.php] Fixed stale `page-builder.php` includes (old hyphenated filename) — corrected to `page_builder.php`
+
 - [acf-json/group_fika_page_builder.json] Consolidated all five module layouts (hero_split, services_row, class_grid, product_grid, story_block) into a single ACF Flexible Content field group assigned to post_type == page
 - [template-parts/modules/slider_module.php] Added Slider module: fade transition, 800px max-height, repeater of slides (image, optional title/content/CTA) with a left-aligned 60%-width overlay (title top, content bottom)
 - [assets/css/modules/slider_module.css] Added slider module styles, including mobile breakpoints

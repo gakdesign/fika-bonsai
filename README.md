@@ -69,7 +69,7 @@ fika-bonsai/
 ├── assets/
 │   ├── css/
 │   │   ├── core/                Global styles: base.css, header.css, footer.css, additions.css
-│   │   └── modules/             Per-module CSS, loaded on-demand by page-builder.php
+│   │   └── modules/             Per-module CSS, loaded on-demand by page_builder.php
 │   ├── fonts/                   FontAwesome 6 Free (self-hosted)
 │   └── js/                      main.js, slick.js, bootstrap.bundle.min.js
 ├── inc/                         Modular PHP includes, all loaded by functions.php
@@ -91,25 +91,12 @@ fika-bonsai/
 │   ├── content/                 Page, single, 404, campaign content templates
 │   ├── modules/                 ACF Flexible Content module templates
 │   │   ├── page_builder.php     Child-aware dispatcher for all Flexible Content layouts
-│   │   ├── hero_split.php               Hero: organic split, text + clipped image
-│   │   ├── services_row.php             Three-column service blocks
-│   │   ├── class_grid.php               Cookery class cards with booking CTA
-│   │   ├── product_grid.php             WooCommerce product cards
-│   │   ├── story_block.php              Blockquote / testimonial with decorative divider
-│   │   ├── slider_module.php            Full-width fade slider with per-slide overlay
-│   │   ├── contact_module.php           Title + rich content / form shortcode split
-│   │   ├── split_content_module.php     Left/right split: text+CTA, image, or video per side
-│   │   ├── faq_accordion.php            Question/answer repeater, native <details>/<summary>
-│   │   ├── testimonials_carousel.php    Quote repeater in a Slick fade carousel
-│   │   ├── stats_strip.php              Auto-fit row of number + label stats
-│   │   ├── map_location.php             Address, phone, opening hours, directions link
-│   │   ├── cta_banner.php               Full-width heading + button banner
-│   │   └── logo_strip.php               "As featured in" logo row
+│   │   └── {layout}.php         One file per layout — full list + purpose: MEMORY.md → Module Architecture
 │   └── snippets/                Reusable micro-partials (content-block-intro, etc.)
-├── templates/                   Root-level page templates
-│   ├── page.php
-│   ├── single.php
-│   └── single-campaign.php
+├── templates/                   Root-level page templates (see MEMORY.md → Known Quirks for routing caveats)
+│   ├── page.php                 Actively used — every singular post currently routes through here
+│   ├── single.php                    Not currently reachable — no template_include/root shim wires it up
+│   └── single-campaign.php           Not currently reachable — same reason
 ├── functions.php                Modular loader — requires all inc/ files
 ├── header.php                   WordPress header wrapper
 ├── footer.php                   WordPress footer wrapper
@@ -187,7 +174,7 @@ Recommended:
 
 ### CSS development
 
-All CSS is plain CSS — no preprocessor. Edit files in `assets/css/core/` for global styles, or `assets/css/modules/{layout}.css` for module-specific styles. Module CSS is loaded on-demand by `page-builder.php` — only when that layout appears on a page.
+All CSS is plain CSS — no preprocessor. Edit files in `assets/css/core/` for global styles, or `assets/css/modules/{layout}.css` for module-specific styles. Module CSS is loaded on-demand by `page_builder.php` — only when that layout appears on a page.
 
 Do not minify CSS by hand. Do not move module CSS into the global stylesheet.
 

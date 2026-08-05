@@ -30,8 +30,8 @@
 
 - **Modular loader pattern:** functions.php does nothing except iterate a $modules array and require_once each inc/{module}.php file. This keeps functions.php clean and makes it easy to disable individual features without hunting through a monolithic file.
 - **ACF Flexible Content for all layouts:** All page content is built through the page_builder ACF field using Flexible Content layouts. There is no Gutenberg. This is intentional — Gutenberg is disabled via inc/gutenberg.php.
-- **Child-aware page-builder dispatcher:** template-parts/modules/page-builder.php uses get_theme_file_path() and locate_template() so a child theme can override any module template or CSS without touching the parent. This is future-proofing for potential multi-site or white-label use.
-- **On-demand module CSS:** Each module's CSS is only enqueued when that layout appears on a page. This is handled by page-builder.php, not by assets.php. Do not move module CSS into the global enqueue.
+- **Child-aware page-builder dispatcher:** template-parts/modules/page_builder.php uses get_theme_file_path() and locate_template() so a child theme can override any module template or CSS without touching the parent. This is future-proofing for potential multi-site or white-label use.
+- **On-demand module CSS:** Each module's CSS is only enqueued when that layout appears on a page. This is handled by page_builder.php, not by assets.php. Do not move module CSS into the global enqueue.
 - **ACF JSON sync:** /acf-json/ is the single source of truth for all field group definitions. Always commit after field group changes. Always sync on new environments before expecting modules to work.
 - **Humans.txt via ACF:** The /humans.txt file at the webroot is written by a WordPress hook (acf/save_post), not edited directly. Editing it on the server will be overwritten. Always edit via the Humans.txt options page in admin.
 - **Posts renamed to News:** inc/post-labels.php renames the built-in Posts post type to News throughout the admin UI. This is cosmetic — the post_type slug remains 'post'.
@@ -61,7 +61,7 @@
 
 ## Module Architecture
 
-All page content is built via ACF Flexible Content in the `page_builder` field. The dispatcher is `template-parts/modules/page_builder.php`. All 14 layouts live inside the single `page_builder` flexible content field — there is one ACF JSON file for the whole set (`group_fika_page_builder.json`), not one file per module.
+All page content is built via ACF Flexible Content in the `page_builder` field. The dispatcher is `template-parts/modules/page_builder.php`. All 18 layouts live inside the single `page_builder` flexible content field — there is one ACF JSON file for the whole set (`group_fika_page_builder.json`), not one file per module. `page_builder` is available on `page`, `market`, and `workshop` post types.
 
 | Layout slug | PHP template | CSS | Purpose |
 |---|---|---|---|
@@ -79,8 +79,14 @@ All page content is built via ACF Flexible Content in the `page_builder` field. 
 | map_location | template-parts/modules/map_location.php | assets/css/modules/map_location.css | Address, phone, opening hours, directions link |
 | cta_banner | template-parts/modules/cta_banner.php | assets/css/modules/cta_banner.css | Full-width heading + button banner |
 | logo_strip | template-parts/modules/logo_strip.php | assets/css/modules/logo_strip.css | "As featured in" logo row, greyscale until hover |
+| banner_module | template-parts/modules/banner_module.php | assets/css/modules/banner_module.css | Full-bleed background image, title, subheader, single CTA |
+| media_module | template-parts/modules/media_module.php | assets/css/modules/media_module.css | Full-width image (no cropping) or a YouTube/Vimeo embed |
+| event_details_module | template-parts/modules/event_details_module.php | assets/css/modules/event_details_module.css | Auto-pulls date/time/location/price/description/booking from the *current Market post's own fields*, optional Google Map |
+| workshop_details_module | template-parts/modules/workshop_details_module.php | assets/css/modules/workshop_details_module.css | Auto-pulls price/spots/date/time/location/description/booking from the *current Workshop post's own fields*, booking-focused, optional Google Map |
 
 `BLANK.php` / `BLANK.css` are the scaffold pair to copy when adding a new module.
+
+**Note on event_details_module / workshop_details_module:** these two do not have their own manual-entry fields for date/price/location/etc — they read directly from the current post's Market / Workshop Details fields (see ACF Field Groups below), so they only produce output when placed in the Page Builder on a single Market or Workshop post. Each module row only has a `heading` override and a `show_map` toggle; the map is built from a plain Google Maps URL (`google.com/maps?q={location}&output=embed`) — no API key required, but it is a third-party iframe, so confirm Cookiebot handling before go-live if `show_map` is enabled anywhere.
 
 To add a new module: create the ACF layout inside `page_builder` (underscores in slug), create the PHP template and CSS file, export JSON, commit everything.
 
@@ -92,8 +98,8 @@ All field groups live in /acf-json/. Always commit this folder after changes.
 
 | File | Contains | Notes |
 |---|---|---|
-| group_fika_page_builder.json | All 14 `page_builder` Flexible Content layouts (see Module Architecture above) | Single field group for the whole page builder |
-| group_fika_market_workshop_details.json | Market / Workshop Details field group | Feeds the Market/Workshop ↔ class relationship used by class_grid |
+| group_fika_page_builder.json | All 18 `page_builder` Flexible Content layouts (see Module Architecture above) | Single field group for the whole page builder. Location: `page`, `market`, `workshop` |
+| group_fika_market_workshop_details.json | Market / Workshop Details field group | Feeds the Market/Workshop ↔ class relationship used by class_grid, and is what event_details_module / workshop_details_module auto-pull from. Location: `market`, `workshop` |
 | group_64525a8b8885f.json | Theme Settings | Options page: sitewide content (logo, contact, social, etc.) |
 | group_6881f94ae87b3.json | Humans.txt | Options page: writes /humans.txt on save |
 
@@ -129,6 +135,8 @@ ACF Options Pages:
 - **AOS (Animate On Scroll):** Both the AOS CSS and JS enqueues are commented out in assets.php. Do not uncomment without confirming the animation library is needed and that Cookiebot consent implications have been considered.
 - **hero-split icon output:** The hero-split.php module calls bonsai_get_feature_icon() without escaping the return value. Confirm that bonsai_get_feature_icon() returns sanitised HTML (it likely does via wp_kses or similar — verify in inc/module-helpers.php before flagging).
 - **story-block background_style:** The story-block module appends a CSS class based on the background_style ACF field value. The field is escaped with esc_attr() inline. Confirm the select field options match the expected CSS class names.
+- **`templates/single.php` and `templates/single-campaign.php` are currently unreachable (flagged 2026-08-05):** WordPress's template hierarchy only checks the theme root for files like `single.php` / `single-{post_type}.php` — it does not look inside a `templates/` subfolder unless something (a root-level shim file or a `template_include` filter) redirects it there. No such redirect exists in this theme. The theme root only has `index.php`, which unconditionally loads `templates/page.php`. Practical effect: **every** singular post — News posts, campaign posts, and now Market/Workshop posts — currently renders through `templates/page.php` → `content-page.php` → `page_builder.php`, regardless of post type. This is why enabling `page_builder` on `market`/`workshop` worked without adding new template files — they were already routing through the page template. It also means `template-parts/content/content-single.php` and `content-campaign.php` (and their dedicated single-post layouts) never actually run. Confirm with Ben whether this was intentional (page_builder is the only layout system in use) or whether the single-post/campaign templates were meant to be wired up and got missed.
+- **~~content-single.php page-builder.php typo~~ (fixed):** Regardless of the reachability issue above, `content-single.php` was also including the old hyphenated `page-builder.php` filename (would have 404'd/warned if ever reached). Corrected to `page_builder.php`.
 
 ---
 

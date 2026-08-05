@@ -80,7 +80,7 @@
 ---
 
 [FLEXIBLE CONTENT MODULES]
-14 ACF Flexible Content layouts are available, all inside the single page_builder field (group_fika_page_builder.json). Each has a matching PHP template and CSS file, named with underscores.
+18 ACF Flexible Content layouts are available, all inside the single page_builder field (group_fika_page_builder.json). Each has a matching PHP template and CSS file, named with underscores. page_builder is enabled on post_type page, market, and workshop.
 
 | Layout slug           | Template file                                    | CSS file                                     | Purpose                                              |
 |------------------------|---------------------------------------------------|------------------------------------------------|--------------------------------------------------------|
@@ -98,6 +98,12 @@
 | map_location           | template-parts/modules/map_location.php            | assets/css/modules/map_location.css            | Address, phone, opening hours, directions link         |
 | cta_banner             | template-parts/modules/cta_banner.php              | assets/css/modules/cta_banner.css              | Full-width heading + button banner                     |
 | logo_strip             | template-parts/modules/logo_strip.php              | assets/css/modules/logo_strip.css              | "As featured in" logo row, greyscale until hover       |
+| banner_module          | template-parts/modules/banner_module.php           | assets/css/modules/banner_module.css           | Full-bleed background image, title, subheader, one CTA |
+| media_module           | template-parts/modules/media_module.php            | assets/css/modules/media_module.css            | Full-width image (no cropping) or a YouTube/Vimeo video via ACF oEmbed |
+| event_details_module   | template-parts/modules/event_details_module.php    | assets/css/modules/event_details_module.css    | Auto-pulls date/time/location/price/description/booking from the CURRENT Market post's own fields; optional Google Map |
+| workshop_details_module| template-parts/modules/workshop_details_module.php | assets/css/modules/workshop_details_module.css | Auto-pulls price/spots/date/time/location/description/booking from the CURRENT Workshop post's own fields; booking-focused; optional Google Map |
+
+event_details_module and workshop_details_module have no manual date/price/location fields of their own — they read get_field('event_date'|'event_time'|'location'|'price'|'description'|'book_link'|'spots_remaining'|'sold_out') on the CURRENT post (no ID arg, relies on The Loop), i.e. the Market / Workshop Details field group (group_fika_market_workshop_details.json). They only produce output on a single market/workshop post — bail silently elsewhere (WP_DEBUG notice only). Do not add duplicate manual fields to these layouts; edit the post's own fields instead.
 
 BLANK.php / BLANK.css are the scaffold pair to copy when adding a new module.
 
