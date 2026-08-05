@@ -23,6 +23,28 @@
 		</div>
 		<?php endif; ?>
 
+		<?php if ( is_front_page() ) :
+			$hero_logo = get_field( 'site_main_logo', 'option' );
+		?>
+		<div class="site-header-hero">
+			<a class="site-header-hero-logo" href="<?php bloginfo( 'url' ); ?>/" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+				<?php if ( $hero_logo ) :
+					$hero_logo_id = is_array( $hero_logo ) ? $hero_logo['ID'] : $hero_logo;
+					echo wp_get_attachment_image(
+						$hero_logo_id,
+						'large',
+						false,
+						array( 'loading' => 'eager', 'fetchpriority' => 'high' )
+					);
+				else :
+					?>
+					<span class="brand-name">fika</span>
+					<span class="brand-tag">exeter</span>
+				<?php endif; ?>
+			</a>
+		</div>
+		<?php endif; ?>
+
 		<header class="site-header">
 			<div class="header-inner">
 				<a class="brand" href="<?php bloginfo( 'url' ); ?>/">
@@ -83,37 +105,3 @@
 		</header>
 
 		<main id="main">
-		<div class="mobile-overflow">
-			<header>
-				<div class="navigation-bg">
-					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/header-banner.png" alt=" " class="img-res"/>
-				</div>
-				<div class="container container-header">
-					<div class="row">
-						<div class="col-lg-5">
-							
-						</div>
-						<div class="col-lg-2 text-center">
-							<a href="<?php bloginfo('url'); ?>/" title="<?php echo get_bloginfo( 'name' ); ?>" class="header-logo">
-								<?php 
-									$image = get_field('site_main_logo', 'option');
-									if ( $image ) {
-											echo wp_get_attachment_image( $image, 'full' );
-									}
-								?>
-							</a>
-						</div>
-						<div class="col-lg-5 text-end">
-
-
-							<div class="hamburger" id="trigger">
-								<div class="hamburger-lines">
-									<div class="top-bun"></div>
-									<div class="meat"></div>
-									<div class="bottom-bun"></div>
-								</div>
-							</div>
-						</div>
-				</div>
-			</header>
-			<div class="hidden-height"></div>

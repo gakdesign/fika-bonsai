@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- [template-parts/header/site-header.php, assets/css/core/header.css] Added a large centred-logo `.site-header-hero` block, shown only on the front page above the standard sticky nav — pulls the Theme Settings "Site Header Logo" image field, falls back to the text brand mark. Non-sticky, no JS: scrolls away naturally as the visitor scrolls, revealing the existing compact sticky header
 - [acf-json/group_fika_page_builder.json] Added four new page_builder layouts: banner_module (background image + title + subheader + single CTA), media_module (full-width image or YouTube/Vimeo video via ACF oEmbed), event_details_module and workshop_details_module (auto-pull date/time/location/price/description/booking from the current Market/Workshop post's own fields, each with an optional no-API-key Google Map embed)
 - [template-parts/modules/banner_module.php, media_module.php, event_details_module.php, workshop_details_module.php] Added matching PHP templates
 - [assets/css/modules/banner_module.css, media_module.css, event_details_module.css, workshop_details_module.css] Added matching module styles
@@ -15,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - [template-parts/content/content-single.php, content-campaign.php] Fixed stale `page-builder.php` includes (old hyphenated filename) — corrected to `page_builder.php`
+
+### Removed
+- [template-parts/header/site-header.php] Removed a dead prototype `<header>` block nested inside `<main>` — a broken `<img>` pointing at a non-existent `img/header-banner.png`, an unstyled `.hamburger` button, and an unclosed `<div class="mobile-overflow">` that had `overflow: hidden` silently applied to the rest of every page since it was never closed anywhere in the theme. `main.js`'s matching `.hamburger`/`.mobile-overflow` jQuery handlers (targeting `#slide-div`/`#slide-room-bookings-canvas`, IDs that don't exist in this theme) are now fully dead code but were left in place — not in scope for this change
 
 - [acf-json/group_fika_page_builder.json] Consolidated all five module layouts (hero_split, services_row, class_grid, product_grid, story_block) into a single ACF Flexible Content field group assigned to post_type == page
 - [template-parts/modules/slider_module.php] Added Slider module: fade transition, 800px max-height, repeater of slides (image, optional title/content/CTA) with a left-aligned 60%-width overlay (title top, content bottom)

@@ -42,6 +42,52 @@
 	text-decoration: underline;
 }
 
+/* —— Homepage hero header (front page only, scrolls away naturally above the sticky nav) —— */
+.site-header-hero {
+	background: var(--surface-raised);
+	text-align: center;
+	padding: 3rem 1.5rem 2rem;
+	border-bottom: 1px solid var(--line);
+}
+
+.site-header-hero-logo {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	max-width: 22rem;
+	margin-inline: auto;
+	padding: 2rem 3rem;
+	border: 1px solid var(--line);
+	text-decoration: none;
+	color: var(--ink-strong);
+	transition: opacity 0.2s ease;
+}
+
+.site-header-hero-logo:hover {
+	opacity: 0.85;
+}
+
+.site-header-hero-logo img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.site-header-hero-logo .brand-name {
+	font-family: var(--font-heading);
+	font-size: 2.5rem;
+	letter-spacing: 0.02em;
+	font-weight: 400;
+}
+
+.site-header-hero-logo .brand-tag {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--muted);
+	margin-top: 0.35rem;
+}
+
 /* —— Header —— */
 .site-header {
 	position: sticky;
@@ -269,6 +315,18 @@
 		right: 0.5rem;
 		min-width: 10rem;
 	}
+
+	.site-header-hero {
+		padding: 2rem 1rem 1.5rem;
+	}
+
+	.site-header-hero-logo {
+		padding: 1.25rem 2rem;
+	}
+
+	.site-header-hero-logo .brand-name {
+		font-size: 2rem;
+	}
 }
 
 @media (max-width: 600px) {
@@ -284,6 +342,19 @@
 	.brand-tag {
 		font-size: 11px;
 		margin-top: 1px;
+	}
+
+	.site-header-hero {
+		padding: 1.5rem 1rem 1rem;
+	}
+
+	.site-header-hero-logo {
+		padding: 1rem 1.5rem;
+		max-width: 16rem;
+	}
+
+	.site-header-hero-logo .brand-name {
+		font-size: 1.6rem;
 	}
 
 	.icon-btn {
