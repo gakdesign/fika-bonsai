@@ -16,7 +16,7 @@ This repository contains the bespoke WordPress theme for **Fika Exeter**, built 
 
 Fika Exeter is a cookery school and online shop named after the Swedish concept of taking a break with coffee and something sweet. The site supports three primary commercial journeys: booking cookery classes, purchasing products via WooCommerce, and buying gift vouchers.
 
-The design language is Scandinavian-minimal — warm cinnamon tones, rounded typography (Varela Round headings, Inter body), generous whitespace, and an organic visual style with clipped image shapes and decorative leaf motifs.
+The design language is Scandinavian-minimal — warm cinnamon tones, rounded typography (Poppins headings, self-hosted Glacial Indifference body, Caveat for script accents), generous whitespace, and an organic visual style with clipped image shapes and decorative leaf motifs.
 
 This theme is intended for use exclusively on the **Fika Exeter** site, under Bonsai Digital Collective management.
 
@@ -52,7 +52,7 @@ See the design system reference in [DESIGN.md](DESIGN.md).
 | CSS framework | Bootstrap 5 (custom build) |
 | Carousel | Slick |
 | JavaScript | jQuery (global) |
-| Fonts | Google Fonts — Varela Round + Inter |
+| Fonts | Poppins + Caveat (Google Fonts), Glacial Indifference (self-hosted) |
 | Icons | FontAwesome 6 Free (self-hosted) |
 | eCommerce | WooCommerce |
 | Consent | Cookiebot |
@@ -90,12 +90,21 @@ fika-bonsai/
 │   ├── footer/site-footer.php   Site footer partial
 │   ├── content/                 Page, single, 404, campaign content templates
 │   ├── modules/                 ACF Flexible Content module templates
-│   │   ├── page-builder.php     Child-aware dispatcher for all Flexible Content layouts
-│   │   ├── hero-split.php       Hero: organic split, text + clipped image
-│   │   ├── services-row.php     Three-column service blocks
-│   │   ├── class-grid.php       Cookery class cards with booking CTA
-│   │   ├── product-grid.php     WooCommerce product cards
-│   │   └── story-block.php      Blockquote / testimonial with decorative divider
+│   │   ├── page_builder.php     Child-aware dispatcher for all Flexible Content layouts
+│   │   ├── hero_split.php               Hero: organic split, text + clipped image
+│   │   ├── services_row.php             Three-column service blocks
+│   │   ├── class_grid.php               Cookery class cards with booking CTA
+│   │   ├── product_grid.php             WooCommerce product cards
+│   │   ├── story_block.php              Blockquote / testimonial with decorative divider
+│   │   ├── slider_module.php            Full-width fade slider with per-slide overlay
+│   │   ├── contact_module.php           Title + rich content / form shortcode split
+│   │   ├── split_content_module.php     Left/right split: text+CTA, image, or video per side
+│   │   ├── faq_accordion.php            Question/answer repeater, native <details>/<summary>
+│   │   ├── testimonials_carousel.php    Quote repeater in a Slick fade carousel
+│   │   ├── stats_strip.php              Auto-fit row of number + label stats
+│   │   ├── map_location.php             Address, phone, opening hours, directions link
+│   │   ├── cta_banner.php               Full-width heading + button banner
+│   │   └── logo_strip.php               "As featured in" logo row
 │   └── snippets/                Reusable micro-partials (content-block-intro, etc.)
 ├── templates/                   Root-level page templates
 │   ├── page.php
@@ -107,8 +116,6 @@ fika-bonsai/
 ├── index.php                    Fallback template
 ├── 404.php                      404 template
 ├── DESIGN.md                    Design system reference (do not edit without updating tokens)
-├── MODULES.md                   Module integration guide (do not edit without developer sign-off)
-├── HEADER-FOOTER-INTEGRATION.md Header/footer integration notes
 ├── llm-instructions.txt         AI context file for any LLM working on this theme
 ├── MEMORY.md                    Session memory reference for Claude Code
 └── CHANGELOG.md                 Version history
@@ -191,7 +198,7 @@ Do not minify CSS by hand. Do not move module CSS into the global stylesheet.
 3. Create `assets/css/modules/{layout-slug}.css`.
 4. Export ACF field groups to `/acf-json/` and commit.
 5. Test the layout appears and CSS loads correctly.
-6. Update `MODULES.md` with the new module's documentation.
+6. Update the module table in `MEMORY.md` with the new module's documentation.
 
 ### ACF JSON sync
 

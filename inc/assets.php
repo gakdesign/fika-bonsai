@@ -20,7 +20,7 @@ function bonsai_assets() {
 
   wp_enqueue_style(
     'fontawesome',
-    BONSAI_THEME_URI . '/assets/fonts/fontawesome/css/fontawesome.min.cs',
+    BONSAI_THEME_URI . '/assets/fonts/fontawesome/css/fontawesome.min.css',
     [],
     filemtime(BONSAI_THEME_DIR . '/assets/fonts/fontawesome/css/fontawesome.min.css')
   );

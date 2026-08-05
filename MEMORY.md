@@ -61,17 +61,28 @@
 
 ## Module Architecture
 
-All page content is built via ACF Flexible Content in the `page_builder` field. The dispatcher is `template-parts/modules/page-builder.php`.
+All page content is built via ACF Flexible Content in the `page_builder` field. The dispatcher is `template-parts/modules/page_builder.php`. All 14 layouts live inside the single `page_builder` flexible content field — there is one ACF JSON file for the whole set (`group_fika_page_builder.json`), not one file per module.
 
-| Layout slug   | PHP template                              | CSS                                      | Purpose                                         |
-|---------------|-------------------------------------------|------------------------------------------|-------------------------------------------------|
-| hero-split    | template-parts/modules/hero-split.php     | assets/css/modules/hero-split.css        | Organic split: text left, clipped image right   |
-| services-row  | template-parts/modules/services-row.php   | assets/css/modules/services-row.css      | Three-column service blocks                     |
-| class-grid    | template-parts/modules/class-grid.php     | assets/css/modules/class-grid.css        | Cookery class cards with booking CTA            |
-| product-grid  | template-parts/modules/product-grid.php   | assets/css/modules/product-grid.css      | Featured WooCommerce product cards              |
-| story-block   | template-parts/modules/story-block.php    | assets/css/modules/story-block.css       | Blockquote / testimonial, variable background   |
+| Layout slug | PHP template | CSS | Purpose |
+|---|---|---|---|
+| hero_split | template-parts/modules/hero_split.php | assets/css/modules/hero_split.css | Organic split: text left, clipped image right |
+| services_row | template-parts/modules/services_row.php | assets/css/modules/services_row.css | Three-column service blocks |
+| class_grid | template-parts/modules/class_grid.php | assets/css/modules/class_grid.css | Cookery class cards with booking CTA |
+| product_grid | template-parts/modules/product_grid.php | assets/css/modules/product_grid.css | Featured WooCommerce product cards |
+| story_block | template-parts/modules/story_block.php | assets/css/modules/story_block.css | Blockquote / testimonial, variable background |
+| slider_module | template-parts/modules/slider_module.php | assets/css/modules/slider_module.css | Full-width fade slider with per-slide overlay |
+| contact_module | template-parts/modules/contact_module.php | assets/css/modules/contact_module.css | Title + rich content / form shortcode split |
+| split_content_module | template-parts/modules/split_content_module.php | assets/css/modules/split_content_module.css | Left/right split: text+CTA, image, or video per side |
+| faq_accordion | template-parts/modules/faq_accordion.php | assets/css/modules/faq_accordion.css | Q&A repeater, native `<details>`/`<summary>`, no JS |
+| testimonials_carousel | template-parts/modules/testimonials_carousel.php | assets/css/modules/testimonials_carousel.css | Quote repeater in a Slick fade carousel |
+| stats_strip | template-parts/modules/stats_strip.php | assets/css/modules/stats_strip.css | Auto-fit row of number + label stats (2–5 items) |
+| map_location | template-parts/modules/map_location.php | assets/css/modules/map_location.css | Address, phone, opening hours, directions link |
+| cta_banner | template-parts/modules/cta_banner.php | assets/css/modules/cta_banner.css | Full-width heading + button banner |
+| logo_strip | template-parts/modules/logo_strip.php | assets/css/modules/logo_strip.css | "As featured in" logo row, greyscale until hover |
 
-To add a new module: create the ACF layout (underscores in slug), create the PHP template and CSS file, export JSON, commit everything.
+`BLANK.php` / `BLANK.css` are the scaffold pair to copy when adding a new module.
+
+To add a new module: create the ACF layout inside `page_builder` (underscores in slug), create the PHP template and CSS file, export JSON, commit everything.
 
 ---
 
@@ -79,13 +90,12 @@ To add a new module: create the ACF layout (underscores in slug), create the PHP
 
 All field groups live in /acf-json/. Always commit this folder after changes.
 
-| File | Layout slug | Notes |
+| File | Contains | Notes |
 |---|---|---|
-| group_fika_hero_split.json | hero-split | Kicker, heading, accent word, lead text, dual CTAs, features repeater, hero image |
-| group_fika_services_row.json | services-row | Services repeater: title, description, link text, link URL |
-| group_fika_class_grid.json | class-grid | [ASSUMED] Class cards — confirm field structure with Ben |
-| group_fika_product_grid.json | product-grid | [ASSUMED] WooCommerce product selection — confirm field structure |
-| group_fika_story_block.json | story-block | Quote text (wp_kses_post), background_style (select: default / variant) |
+| group_fika_page_builder.json | All 14 `page_builder` Flexible Content layouts (see Module Architecture above) | Single field group for the whole page builder |
+| group_fika_market_workshop_details.json | Market / Workshop Details field group | Feeds the Market/Workshop ↔ class relationship used by class_grid |
+| group_64525a8b8885f.json | Theme Settings | Options page: sitewide content (logo, contact, social, etc.) |
+| group_6881f94ae87b3.json | Humans.txt | Options page: writes /humans.txt on save |
 
 ACF Options Pages:
 - Site Settings (slug: theme-general-settings) — sitewide content
@@ -103,7 +113,7 @@ ACF Options Pages:
 | inc/helpers.php | bonsai_kses_iframe(), bonsai_get_trimmed_excerpt(), bonsai_get_trimmed_content() |
 | inc/module-helpers.php | bonsai_get_feature_icon() and other module formatting helpers |
 | inc/post-labels.php | Posts > News rename |
-| template-parts/modules/page-builder.php | Flexible Content dispatcher (do not edit without understanding child-aware logic) |
+| template-parts/modules/page_builder.php | Flexible Content dispatcher (do not edit without understanding child-aware logic) |
 | assets/css/core/base.css | Global reset, CSS variables, base element styles |
 | assets/css/core/additions.css | Global overrides and additions beyond base |
 | acf-json/ | Source of truth for all ACF field group definitions |
@@ -113,7 +123,8 @@ ACF Options Pages:
 ## Known Quirks & Issues
 
 - **base.css legacy variables:** The base.css file still contains Bonsai Base Theme colour variables (--black: #0C1526, --orange: #c47714, etc.) that are not part of the Fika brand. These exist for compatibility with Bootstrap component styling. Do not use them for new module work — use the Fika design tokens instead.
-- **Google Fonts comment in assets.php:** The enqueued font family in assets.php references "Cormorant Garamond" in the Google Fonts URL string. The correct fonts for Fika are Varela Round + Inter. [Flag to Ben — the assets.php Google Fonts enqueue may need updating to match the actual font specification.]
+- **~~Google Fonts comment in assets.php~~ (resolved):** Fonts are now Poppins (headings, Google Fonts) + Glacial Indifference (body, self-hosted, see `assets/fonts/glacial-indifference/README.md`) + Caveat (script accents, Google Fonts) — set in `inc/assets.php` and `assets/css/core/additions.css`. `--font-body` falls back to `system-ui, sans-serif` until the licensed Glacial Indifference font files are dropped into that folder.
+- **~~fontawesome.min.cs typo~~ (fixed):** `inc/assets.php` was enqueueing FontAwesome from `fontawesome.min.cs` (missing the final `s`) — the style tag pointed at a 404 while the cache-busting `filemtime()` call happened to reference the real `.css` file, so the bug was easy to miss. Fixed to `fontawesome.min.css`.
 - **SiteMinder CPT:** The assets.php file conditionally enqueues the SiteMinder IBE widget on is_singular('accommodation'). Whether the 'accommodation' CPT exists or is registered elsewhere is not confirmed from the available files. Confirm with Ben before building any template for it.
 - **AOS (Animate On Scroll):** Both the AOS CSS and JS enqueues are commented out in assets.php. Do not uncomment without confirming the animation library is needed and that Cookiebot consent implications have been considered.
 - **hero-split icon output:** The hero-split.php module calls bonsai_get_feature_icon() without escaping the return value. Confirm that bonsai_get_feature_icon() returns sanitised HTML (it likely does via wp_kses or similar — verify in inc/module-helpers.php before flagging).
@@ -123,7 +134,6 @@ ACF Options Pages:
 
 ## Ongoing Work
 
-- [ ] Confirm Google Fonts URL in assets.php is Varela Round + Inter (currently references Cormorant Garamond)
 - [ ] Confirm whether the 'accommodation' CPT exists and what template it uses
 - [ ] Confirm SEO plugin in use (Yoast or RankMath)
 - [ ] Confirm staging and live URLs

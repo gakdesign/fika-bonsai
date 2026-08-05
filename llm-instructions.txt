@@ -49,8 +49,8 @@
 - templates/page.php — standard page template, loads template-parts/content/content-page.php
 - templates/single.php — single post (News), loads content-single.php
 - templates/single-campaign.php — campaign post type template
-- template-parts/content/content-page.php — calls template-parts/modules/page-builder.php
-- template-parts/modules/page-builder.php — child-aware ACF Flexible Content dispatcher
+- template-parts/content/content-page.php — calls template-parts/modules/page_builder.php
+- template-parts/modules/page_builder.php — child-aware ACF Flexible Content dispatcher
     - For each layout row: enqueues assets/css/modules/{layout}.css (child-first), then includes template-parts/modules/{layout}.php
     - Falls back to parent theme if child theme override not found
     - WP_DEBUG notice fired if no template found for a layout
@@ -70,48 +70,60 @@
     - Site Settings (slug: theme-general-settings, cap: edit_posts) — sitewide content used throughout the theme
     - Humans.txt Editor (slug: site-text-files, cap: manage_options) — writes /humans.txt on save
 - Key ACF field groups (all in /acf-json/):
-    - group_fika_hero_split.json — hero-split layout
-    - group_fika_services_row.json — services-row layout
-    - group_fika_class_grid.json — class-grid layout
-    - group_fika_product_grid.json — product-grid layout
-    - group_fika_story_block.json — story-block layout
+    - group_fika_page_builder.json — the page_builder Flexible Content field, all 14 layouts (see below)
+    - group_fika_market_workshop_details.json — Market/Workshop Details field group (feeds class_grid)
+    - group_64525a8b8885f.json — Theme Settings options page
+    - group_6881f94ae87b3.json — Humans.txt options page
 - page_builder field: pre-populated for new posts via inc/acf-defaults.php
 - Humans.txt writer: acf/save_post hook (post_id === 'options') reads 'humans_txt_content' field and writes to ABSPATH . 'humans.txt'
 
 ---
 
 [FLEXIBLE CONTENT MODULES]
-Five ACF Flexible Content layouts are available. Each has a matching PHP template and CSS file.
+14 ACF Flexible Content layouts are available, all inside the single page_builder field (group_fika_page_builder.json). Each has a matching PHP template and CSS file, named with underscores.
 
-| Layout slug     | Template file                              | CSS file                                  | Purpose                                        |
-|-----------------|--------------------------------------------|-------------------------------------------|------------------------------------------------|
-| hero-split      | template-parts/modules/hero-split.php      | assets/css/modules/hero-split.css         | Organic split: text left, clipped image right  |
-| services-row    | template-parts/modules/services-row.php    | assets/css/modules/services-row.css       | Three-column service blocks (Classes/Shop/Vouchers) |
-| class-grid      | template-parts/modules/class-grid.php      | assets/css/modules/class-grid.css         | Cookery class cards with booking CTA           |
-| product-grid    | template-parts/modules/product-grid.php    | assets/css/modules/product-grid.css       | Featured WooCommerce product cards             |
-| story-block     | template-parts/modules/story-block.php     | assets/css/modules/story-block.css        | Blockquote / testimonial with decorative divider |
+| Layout slug           | Template file                                    | CSS file                                     | Purpose                                              |
+|------------------------|---------------------------------------------------|------------------------------------------------|--------------------------------------------------------|
+| hero_split             | template-parts/modules/hero_split.php              | assets/css/modules/hero_split.css              | Organic split: text left, clipped image right          |
+| services_row           | template-parts/modules/services_row.php            | assets/css/modules/services_row.css            | Three-column service blocks (Classes/Shop/Vouchers)    |
+| class_grid             | template-parts/modules/class_grid.php              | assets/css/modules/class_grid.css              | Cookery class cards with booking CTA                   |
+| product_grid           | template-parts/modules/product_grid.php            | assets/css/modules/product_grid.css            | Featured WooCommerce product cards                     |
+| story_block            | template-parts/modules/story_block.php             | assets/css/modules/story_block.css             | Blockquote / testimonial with decorative divider       |
+| slider_module          | template-parts/modules/slider_module.php           | assets/css/modules/slider_module.css           | Full-width fade slider with per-slide overlay          |
+| contact_module         | template-parts/modules/contact_module.php          | assets/css/modules/contact_module.css          | Title + rich content / form shortcode split            |
+| split_content_module   | template-parts/modules/split_content_module.php    | assets/css/modules/split_content_module.css    | Left/right split: text+CTA, image, or video per side   |
+| faq_accordion          | template-parts/modules/faq_accordion.php           | assets/css/modules/faq_accordion.css           | Q&A repeater, native <details>/<summary>, no JS        |
+| testimonials_carousel  | template-parts/modules/testimonials_carousel.php   | assets/css/modules/testimonials_carousel.css   | Quote repeater in a Slick fade carousel                |
+| stats_strip            | template-parts/modules/stats_strip.php             | assets/css/modules/stats_strip.css             | Auto-fit row of number + label stats (2-5 items)       |
+| map_location           | template-parts/modules/map_location.php            | assets/css/modules/map_location.css            | Address, phone, opening hours, directions link         |
+| cta_banner             | template-parts/modules/cta_banner.php              | assets/css/modules/cta_banner.css              | Full-width heading + button banner                     |
+| logo_strip             | template-parts/modules/logo_strip.php              | assets/css/modules/logo_strip.css              | "As featured in" logo row, greyscale until hover       |
+
+BLANK.php / BLANK.css are the scaffold pair to copy when adding a new module.
 
 To add a new module:
 1. Create the ACF layout in the page_builder field group, name it with underscores (e.g. image_text_split)
-2. Create template-parts/modules/{layout-slug}.php
-3. Create assets/css/modules/{layout-slug}.css
+2. Create template-parts/modules/{layout_slug}.php
+3. Create assets/css/modules/{layout_slug}.css
 4. Export ACF JSON and commit /acf-json/
 
 ---
 
 [DESIGN TOKENS]
-CSS custom properties defined in assets/css/core/base.css and module CSS files.
+CSS custom properties defined in assets/css/core/additions.css and module CSS files.
 The Fika design system uses:
 
 - --accent:       #6E4518   (cinnamon brown — primary brand colour, CTAs, links)
 - --accent-hover: #543210   (darker cinnamon — hover state)
 - --surface:      #F5F3F2   (warm off-white — panel and card backgrounds)
-- --ink:          #2B2B2B   (primary body text)
-- --ink-strong:   #1A1A1A   (headings, high-emphasis text)
+- --surface-raised: #FFFCFA (cards, modals, sticky bars)
+- --ink:          #999999   (body text — light grey, tuned for Glacial Indifference)
+- --ink-strong:   rgba(0,0,0,0.7)   (headings, high-emphasis text)
 - --muted:        #6B6B6B   (captions, meta, secondary labels)
 - --line:         #E6E4E1   (borders, dividers, input outlines)
-- Heading font:   Varela Round (Google Fonts, rounded geometric — warm, friendly)
-- Body font:      Inter (Google Fonts, clean sans-serif — highly readable)
+- Heading font:   Poppins (Google Fonts, weights 400/500/600/700)
+- Body font:      Glacial Indifference (self-hosted — see assets/fonts/glacial-indifference/README.md; falls back to system-ui until licensed font files are added)
+- Script font:    Caveat (Google Fonts, weight 500 — decorative accents only)
 - Border radius:  14px (used consistently across cards, buttons, inputs)
 - Max content width: ~72rem / 1152px (class: .max-w)
 
@@ -126,8 +138,8 @@ Always prefer the Fika design tokens above when writing new module CSS.
 - Slick carousel: slick.js + slick.css — for any carousel/slider needs
 - AOS (Animate On Scroll): commented out in assets.php — do NOT enable without checking bundle size and consent implications
 - FontAwesome 6 Free: self-hosted in assets/fonts/fontawesome/ — brands and solid sets available
-- Google Fonts: Varela Round + Inter loaded via wp_head preconnect + wp_enqueue_style
-- CSS pipeline: plain CSS, no preprocessor. Module CSS loaded on-demand by page-builder.php dispatcher.
+- Google Fonts: Poppins + Caveat loaded via wp_head preconnect + wp_enqueue_style; Glacial Indifference is self-hosted (not a Google Font)
+- CSS pipeline: plain CSS, no preprocessor. Module CSS loaded on-demand by page_builder.php dispatcher.
     - Core styles: assets/css/core/ (base.css, header.css, footer.css, additions.css)
     - Module styles: assets/css/modules/{layout}.css — loaded only when that module appears on a page
 - Build system: none. CSS and JS are hand-authored and committed directly. Do NOT minify by hand — use a plugin or pipeline if needed.

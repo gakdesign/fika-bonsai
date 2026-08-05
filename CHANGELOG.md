@@ -41,10 +41,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [inc/assets.php] Corrected Google Fonts URL from Cormorant Garamond to the Fika spec fonts: Varela Round + Inter (400, 500, 600)
 
 ### Fixed
--
+- [inc/assets.php] Fixed FontAwesome stylesheet enqueue pointing at `fontawesome.min.cs` (truncated extension, 404) — corrected to `fontawesome.min.css`
+- [README.md, MEMORY.md, llm-instructions.txt] Corrected stale references to the original five-module, hyphenated-name build state (`hero-split.php` etc.) and the old `page-builder.php` filename — docs now match the current 14 underscore-named modules living in `template-parts/modules/page_builder.php`
+- [MEMORY.md] Corrected ACF Field Groups table — all 14 page_builder layouts live in one field group (`group_fika_page_builder.json`), not one file per module; added the Market/Workshop Details, Theme Settings, and Humans.txt groups that were missing from the table
+- [README.md, MEMORY.md, llm-instructions.txt] Updated font references from the outdated Varela Round/Inter (and a stale Cormorant Garamond flag) to the current Poppins + self-hosted Glacial Indifference + Caveat setup
 
 ### Removed
 - [acf-json/] Deleted four separate ACF field group files (group_fika_services_row, group_fika_class_grid, group_fika_product_grid, group_fika_story_block) — layouts now live inside group_fika_page_builder
+- [MODULES.md, HEADER-FOOTER-INTEGRATION.md] Removed — stale one-off build handoff notes from the theme's initial build session, describing an early five-module state with an enqueue method the theme no longer uses. Current content lives in README.md and MEMORY.md.
 
 ### Security
 -
