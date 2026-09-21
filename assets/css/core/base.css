@@ -52,6 +52,8 @@ h4,
 h5,
 h6 { overflow-wrap: break-word; color: var(--black);margin-top: 0; margin-bottom: 0; }
 
+p {padding-bottom:15px}
+
 #root,
 #__next { isolation: isolate; }
 
