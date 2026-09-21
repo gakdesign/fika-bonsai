@@ -39,6 +39,7 @@
 
 :root {
 	/* Colours */
+	--logo-color:#f4f0f0;
 	--surface: #f5f3f2;
 	--surface-raised: #fffcfa;
 	--ink: #999999;

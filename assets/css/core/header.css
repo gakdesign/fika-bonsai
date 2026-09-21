@@ -44,10 +44,12 @@
 
 /* —— Homepage hero header (front page only, scrolls away naturally above the sticky nav) —— */
 .site-header-hero {
-	background: var(--surface-raised);
+	background: var(--logo-color);
 	text-align: center;
 	padding: 3rem 1.5rem 2rem;
 	border-bottom: 1px solid var(--line);
+	
+
 }
 
 .site-header-hero-logo {
@@ -57,8 +59,8 @@
 	flex-direction: column;
 	max-width: 22rem;
 	margin-inline: auto;
-	padding: 2rem 3rem;
-	border: 1px solid var(--line);
+	/*padding: 2rem 3rem;
+	border: 1px solid var(--line);*/
 	text-decoration: none;
 	color: var(--ink-strong);
 	transition: opacity 0.2s ease;
