@@ -105,10 +105,10 @@ $hero_image = get_sub_field( 'hero_image' );
 		</div>
 
 		<div class="hero-media">
-			<svg class="hero-leaf" viewBox="0 0 120 140" aria-hidden="true">
+			<!-- class="hero-leaf" viewBox="0 0 120 140" aria-hidden="true">
 				<path fill="currentColor" d="M98 8c-18 8-32 24-38 45-4 14-4 28 2 42-12-6-22-16-28-28C20 45 18 22 28 8c20 4 38 14 52 28 6-10 10-20 18-28Z" opacity="0.35" />
 				<path fill="currentColor" d="M75 0c8 22 6 48-8 70-8 12-20 22-34 28C20 60 8 28 20 4c18 4 36 12 55-4Z" />
-			</svg>
+			</svg>-->
 			<div class="hero-media-inner">
 				<?php if ( $hero_image ) : ?>
 				<?php
