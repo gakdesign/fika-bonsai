@@ -48,6 +48,7 @@
 		<header class="site-header">
 			<div class="header-inner">
 				<a class="brand menu-logo" href="<?php bloginfo( 'url' ); ?>/">
+					<?php $hero_logo = get_field( 'site_main_logo', 'option' ); ?>
 					<?php if ( $hero_logo ) :
 					$hero_logo_id = is_array( $hero_logo ) ? $hero_logo['ID'] : $hero_logo;
 					echo wp_get_attachment_image(
