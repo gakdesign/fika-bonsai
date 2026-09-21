@@ -7,7 +7,7 @@
 .site-footer {
 	border-top: 1px solid var(--line);
 	padding: 3rem 0 2rem;
-	background: var(--surface-raised);
+	background: var(--logo-color);
 }
 
 .footer-grid {
@@ -109,7 +109,6 @@
 	max-width: 100px;
 	width:100%;
 	height: auto;
-	mix-blend-mode: hard-light;
 }
 
 /* —— Responsive —— */

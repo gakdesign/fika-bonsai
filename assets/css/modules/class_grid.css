@@ -47,21 +47,30 @@
 }
 
 .class-card {
-	display: block;
-}
-
-.class-card-link {
-	text-decoration: none;
-	color: inherit;
+	position: relative;
 	display: block;
 	transition: transform 0.2s ease;
 }
 
-.class-card-link:hover {
+.class-card:hover {
 	transform: translateY(-2px);
 }
 
-.class-card figure {
+/* Whole-card "stretched link" to the post — sits behind the Book button
+   so both remain independently clickable without nesting anchors. */
+.class-card-link {
+	text-decoration: none;
+	color: inherit;
+}
+
+.class-card-link::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+
+.class-card-figure {
 	margin: 0 0 0.75rem;
 	aspect-ratio: 1;
 	border-radius: var(--radius);
@@ -77,8 +86,8 @@
 	display: block;
 }
 
-.class-card-link:hover img {
-	transform: scale(1.03);
+.class-card:hover img {
+	transform: scale(1.05);
 }
 
 .class-card h3 {
@@ -87,6 +96,17 @@
 	font-weight: 400;
 	margin: 0 0 0.35rem;
 	color: var(--ink-strong);
+}
+
+.class-card h3 .class-card-link:hover {
+	text-decoration: underline;
+}
+
+/* Book button / Sold Out badge stay above the stretched link overlay */
+.class-card-book,
+.btn-sold-out {
+	position: relative;
+	z-index: 2;
 }
 
 .class-meta {
@@ -114,7 +134,7 @@
 	opacity: 0.7;
 }
 
-.class-card-sold-out figure {
+.class-card-sold-out .class-card-figure {
 	filter: grayscale(60%);
 }
 
@@ -188,7 +208,7 @@
 		gap: 1.25rem 1rem;
 	}
 
-	.class-card figure {
+	.class-card-figure {
 		margin-bottom: 0.5rem;
 	}
 

@@ -49,46 +49,39 @@ $view_all_text = get_sub_field( 'view_all_text' ) ?: 'View full calendar';
 
 				$meta_parts = array_filter( array( $date, $time, $price ) );
 				$meta       = implode( ' · ', $meta_parts );
+				$permalink  = get_permalink( $class_id );
 				?>
 			<div class="class-card<?php echo $sold_out ? ' class-card-sold-out' : ''; ?>">
-				<?php if ( ! $sold_out && $book_link ) : ?>
-				<a class="class-card-link" href="<?php echo esc_url( $book_link ); ?>">
+				<?php if ( $image ) : ?>
+				<figure class="class-card-figure">
+					<?php
+					$img_id = is_array( $image ) ? $image['ID'] : $image;
+					echo wp_get_attachment_image(
+						$img_id,
+						'card',
+						false,
+						array( 'loading' => 'lazy' )
+					);
+					?>
+				</figure>
 				<?php endif; ?>
 
-					<?php if ( $image ) : ?>
-					<figure>
-						<?php
-						$img_id = is_array( $image ) ? $image['ID'] : $image;
-						echo wp_get_attachment_image(
-							$img_id,
-							'card',
-							false,
-							array( 'loading' => 'lazy' )
-						);
-						?>
-					</figure>
-					<?php endif; ?>
+				<?php if ( $title ) : ?>
+				<h3><a class="class-card-link" href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $title ); ?></a></h3>
+				<?php endif; ?>
 
-					<?php if ( $title ) : ?>
-					<h3><?php echo esc_html( $title ); ?></h3>
-					<?php endif; ?>
+				<?php if ( $meta ) : ?>
+				<p class="class-meta"><?php echo esc_html( $meta ); ?></p>
+				<?php endif; ?>
 
-					<?php if ( $meta ) : ?>
-					<p class="class-meta"><?php echo esc_html( $meta ); ?></p>
-					<?php endif; ?>
+				<?php if ( $location ) : ?>
+				<p class="class-location"><?php echo esc_html( $location ); ?></p>
+				<?php endif; ?>
 
-					<?php if ( $location ) : ?>
-					<p class="class-location"><?php echo esc_html( $location ); ?></p>
-					<?php endif; ?>
-
-					<?php if ( $sold_out ) : ?>
-					<span class="btn btn-sold-out"><?php esc_html_e( 'Sold Out', 'fika-bonsai' ); ?></span>
-					<?php elseif ( $book_link ) : ?>
-					<span class="btn btn-primary"><?php esc_html_e( 'Book', 'fika-bonsai' ); ?></span>
-					<?php endif; ?>
-
-				<?php if ( ! $sold_out && $book_link ) : ?>
-				</a>
+				<?php if ( $sold_out ) : ?>
+				<span class="btn btn-sold-out"><?php esc_html_e( 'Sold Out', 'fika-bonsai' ); ?></span>
+				<?php elseif ( $book_link ) : ?>
+				<a class="btn btn-primary class-card-book" href="<?php echo esc_url( $book_link ); ?>"><?php esc_html_e( 'Book', 'fika-bonsai' ); ?></a>
 				<?php endif; ?>
 			</div>
 			<?php endforeach; ?>
