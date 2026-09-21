@@ -104,6 +104,14 @@
 	color: var(--accent);
 }
 
+.site-footer-hero-logo img {
+	display: block;
+	max-width: 100px;
+	width:100%;
+	height: auto;
+	mix-blend-mode: hard-light;
+}
+
 /* —— Responsive —— */
 @media (max-width: 1536px) {
 	/* No changes needed */
