@@ -47,9 +47,20 @@
 
 		<header class="site-header">
 			<div class="header-inner">
-				<a class="brand" href="<?php bloginfo( 'url' ); ?>/">
+				<a class="brand menu-logo" href="<?php bloginfo( 'url' ); ?>/">
+					<?php if ( $hero_logo ) :
+					$hero_logo_id = is_array( $hero_logo ) ? $hero_logo['ID'] : $hero_logo;
+					echo wp_get_attachment_image(
+						$hero_logo_id,
+						'large',
+						false,
+						array( 'loading' => 'eager', 'fetchpriority' => 'high' )
+					);
+				else :
+					?>
 					<span class="brand-name">fika</span>
 					<span class="brand-tag">exeter</span>
+				<?php endif; ?>
 				</a>
 
 				<nav aria-label="Primary">

@@ -3,10 +3,21 @@
 	<footer class="site-footer">
 		<div class="max-w footer-grid">
 			<div class="footer-brand">
-				<a class="brand" href="<?php bloginfo( 'url' ); ?>/">
+				<a class="site-footer-hero-logo" href="<?php bloginfo( 'url' ); ?>/" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+				<?php if ( $hero_logo ) :
+					$hero_logo_id = is_array( $hero_logo ) ? $hero_logo['ID'] : $hero_logo;
+					echo wp_get_attachment_image(
+						$hero_logo_id,
+						'large',
+						false,
+						array( 'loading' => 'eager', 'fetchpriority' => 'high' )
+					);
+				else :
+					?>
 					<span class="brand-name">fika</span>
 					<span class="brand-tag">exeter</span>
-				</a>
+				<?php endif; ?>
+			</a>
 				<?php if ( $footer_blurb = get_field( 'footer_blurb', 'option' ) ) : ?>
 					<p><?php echo esc_html( $footer_blurb ); ?></p>
 				<?php endif; ?>
