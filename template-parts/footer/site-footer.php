@@ -4,6 +4,7 @@
 		<div class="max-w footer-grid">
 			<div class="footer-brand">
 				<a class="site-footer-hero-logo" href="<?php bloginfo( 'url' ); ?>/" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+					<?php $hero_logo = get_field( 'site_main_logo', 'option' ); ?>
 				<?php if ( $hero_logo ) :
 					$hero_logo_id = is_array( $hero_logo ) ? $hero_logo['ID'] : $hero_logo;
 					echo wp_get_attachment_image(
