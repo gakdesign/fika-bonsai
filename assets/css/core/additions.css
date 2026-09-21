@@ -175,7 +175,7 @@ a:hover {
 }
 
 .btn-primary:hover {
-	background: var(--accent-hover);
+	background: var(--sage);
 }
 
 .btn-primary:active {
