@@ -7,13 +7,14 @@
 
 .split-content-module {
 	background: var(--surface);
-	padding: 4rem 0;
+	padding: 4rem 0 0em;
 }
 
 .split-content-title {
 	font-family: var(--font-heading);
 	font-weight: 400;
 	font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
 	color: var(--ink-strong);
 	margin: 0 0 2.5rem;
 	text-align: center;

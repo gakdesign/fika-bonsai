@@ -118,6 +118,42 @@
             "append": ""
         },
         {
+            "key": "field_fika_social_instagram_url",
+            "label": "Instagram URL",
+            "name": "social_instagram_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Full profile URL. Leave blank to hide the icon.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "https://www.instagram.com/"
+        },
+        {
+            "key": "field_fika_social_facebook_url",
+            "label": "Facebook URL",
+            "name": "social_facebook_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Full page URL. Leave blank to hide the icon.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "https://www.facebook.com/"
+        },
+        {
             "key": "field_64525ae82564d",
             "label": "Copyright Text",
             "name": "copyright_text",
@@ -181,5 +217,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790760000
+    "modified": 1791331300
 }
