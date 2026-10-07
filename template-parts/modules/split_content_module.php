@@ -66,6 +66,7 @@ if ( ! function_exists( 'bonsai_render_split_content_side' ) ) {
 }
 
 $main_title    = get_sub_field( 'main_title' );
+$title_align   = get_sub_field( 'title_alignment' );
 $reverse_order = get_sub_field( 'reverse_order' );
 $vertical_align = get_sub_field( 'vertical_align' ) ?: 'top';
 $left_content  = get_sub_field( 'left_content' );
@@ -78,12 +79,18 @@ if ( $reverse_order ) {
 if ( 'center' === $vertical_align ) {
 	$grid_classes .= ' split-content-align-center';
 }
+
+// Whitelist the modifier — anything unexpected keeps the default centred title.
+$title_classes = 'split-content-title';
+if ( 'left' === $title_align ) {
+	$title_classes .= ' split-content-title--left';
+}
 ?>
 
 <section class="section split-content-module"<?php echo $main_title ? ' aria-labelledby="split-content-heading"' : ' aria-label="' . esc_attr__( 'Split content', 'fika-bonsai' ) . '"'; ?>>
 	<div class="max-w">
 		<?php if ( $main_title ) : ?>
-		<h2 id="split-content-heading" class="split-content-title">
+		<h2 id="split-content-heading" class="<?php echo esc_attr( $title_classes ); ?>">
 			<?php echo esc_html( $main_title ); ?>
 		</h2>
 		<?php endif; ?>

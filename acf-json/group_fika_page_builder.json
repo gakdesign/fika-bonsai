@@ -1076,6 +1076,29 @@
                             "append": ""
                         },
                         {
+                            "key": "field_fika_split_title_alignment",
+                            "label": "Title Alignment",
+                            "name": "title_alignment",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "centre": "Centre",
+                                "left": "Left"
+                            },
+                            "default_value": "centre",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
+                        },
+                        {
                             "key": "field_fika_split_reverse_order",
                             "label": "Reverse Order",
                             "name": "reverse_order",
@@ -2651,5 +2674,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1791331400
+    "modified": 1791331500
 }

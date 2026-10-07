@@ -20,6 +20,10 @@
 	text-align: center;
 }
 
+.split-content-title--left {
+	text-align: left;
+}
+
 .split-content-grid {
 	display: grid;
 	grid-template-columns: 1fr;
