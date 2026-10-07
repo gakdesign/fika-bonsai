@@ -1,0 +1,46 @@
+/**
+ * Media Module (Image / Video)
+ *
+ * Full-width image (natural aspect ratio) or a 16:9 video embed.
+ * Styles for template-parts/modules/media_module.php
+ */
+
+.media-module-figure {
+	margin: 0;
+}
+
+.media-module-figure-narrow {
+	max-width: 48rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.media-module-image {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: var(--radius);
+}
+
+.media-module-caption {
+	margin-top: 0.75rem;
+	font-size: 0.9rem;
+	color: var(--muted);
+	text-align: center;
+}
+
+.media-module-video {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border-radius: var(--radius);
+	overflow: hidden;
+}
+
+.media-module-video iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}

@@ -1,0 +1,114 @@
+/**
+ * Testimonials Carousel Module
+ *
+ * Repeater of quotes rotated via Slick (.testimonials-carousel-track init in main.js).
+ * Styles for template-parts/modules/testimonials_carousel.php
+ */
+
+.testimonials-carousel {
+	background: var(--surface);
+	padding: 4rem 0;
+}
+
+.testimonials-carousel .section-title {
+	font-family: var(--font-heading);
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
+	font-weight: 400;
+	text-align: center;
+	color: var(--ink-strong);
+	margin: 0 0 2.5rem;
+	letter-spacing: 0.02em;
+}
+
+.max-w-narrow {
+	max-width: 42rem;
+}
+
+.testimonials-carousel-track {
+	display: flex;
+}
+
+.testimonials-carousel-track.slick-initialized {
+	display: block;
+}
+
+.testimonial-slide {
+	text-align: center;
+	padding: 0 1rem;
+}
+
+.testimonial-slide blockquote {
+	max-width: 38rem;
+	margin: 0 auto 1.25rem;
+	font-size: 1.15rem;
+	font-style: italic;
+	color: var(--ink);
+	line-height: 1.7;
+}
+
+.testimonial-slide blockquote::before {
+	content: '';
+	display: block;
+	width: 3rem;
+	height: 1px;
+	background: var(--accent);
+	margin: 0 auto 1.25rem;
+	opacity: 0.5;
+}
+
+.testimonial-name {
+	font-family: var(--font-heading);
+	font-size: 0.95rem;
+	color: var(--ink-strong);
+	margin: 0;
+}
+
+.testimonial-role {
+	display: block;
+	font-family: var(--font-body);
+	font-size: 13px;
+	color: var(--muted);
+	margin-top: 0.15rem;
+}
+
+.testimonials-carousel .slick-dots {
+	position: static;
+	margin-top: 1.5rem;
+}
+
+/* Breakpoints */
+@media (max-width: 1536px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1366px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1280px) {
+	/* No changes needed */
+}
+
+@media (max-width: 992px) {
+	/* No changes needed */
+}
+
+@media (max-width: 768px) {
+	.testimonials-carousel {
+		padding: 3rem 0;
+	}
+
+	.testimonial-slide blockquote {
+		font-size: 1.05rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.testimonials-carousel {
+		padding: 2.5rem 0;
+	}
+
+	.testimonial-slide blockquote {
+		font-size: 1rem;
+	}
+}

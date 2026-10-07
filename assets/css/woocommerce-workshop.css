@@ -1,0 +1,458 @@
+/**
+ * WooCommerce — Workshop product layout
+ *
+ * Single product pages in the "workshops" product category.
+ * Styles for template-parts/woocommerce/workshop-product.php
+ * Loaded only on those pages (inc/woocommerce.php → bonsai_wc_assets()).
+ *
+ * Layout follows modules/hero_split.css: content left (2/3), featured image
+ * bleeding to the right edge (1/3) with the same organic clip. On mobile the
+ * image sits above the content, full width, unclipped.
+ *
+ * Detail styles (price / meta / spots) match modules/workshop_details_module.css
+ * — module CSS only loads when the module is in the page_builder, so the rules
+ * are repeated here, scoped to .workshop-product.
+ */
+
+.woocommerce div.product.workshop-product {
+	margin-bottom: 0;
+}
+
+/* =============================
+  # Hero: content 2/3, image 1/3
+============================= */
+
+.workshop-product-hero {
+	position: relative;
+	overflow: hidden;
+}
+
+.workshop-product-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+.workshop-product-info {
+	width: min(100% - 2.5rem, var(--max-w));
+	margin-inline: auto;
+	padding: 2rem 0 3rem;
+	position: relative;
+	z-index: 2;
+}
+
+/* Mobile: image first, full width, no clip */
+.workshop-product-media {
+	order: -1;
+	position: relative;
+	aspect-ratio: 4 / 3;
+	background: var(--line);
+}
+
+.workshop-product-media-inner {
+	position: absolute;
+	inset: 0;
+}
+
+.workshop-product-media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* Out of stock — soften the image like .class-card-sold-out */
+.workshop-product.outofstock .workshop-product-media img {
+	filter: grayscale(60%);
+}
+
+/* =============================
+  # Details
+============================= */
+
+.workshop-product-kicker {
+	font-family: var(--font-script);
+	font-size: clamp(1.35rem, 2.5vw, 1.6rem);
+	line-height: 1;
+	color: var(--accent);
+	margin: 0 0 0.75rem;
+}
+
+.woocommerce div.product.workshop-product .workshop-product-title {
+	font-family: var(--font-heading);
+	font-size: clamp(2rem, 4.5vw, 2.85rem);
+	font-weight: 400;
+	line-height: 1.12;
+	letter-spacing: 0.02em;
+	color: var(--ink-strong);
+	margin: 0 0 1rem;
+}
+
+.woocommerce div.product.workshop-product p.workshop-details-price {
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	color: var(--accent);
+	margin: 0 0 0.25rem;
+}
+
+.workshop-product .workshop-details-meta {
+	font-weight: 600;
+	color: var(--ink-strong);
+	margin: 0 0 0.5rem;
+}
+
+/* =============================
+  # Location + map pop-up
+============================= */
+
+.workshop-product .workshop-details-location {
+	margin: 0 0 0.75rem;
+}
+
+.workshop-map-trigger {
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.4rem 0.6rem;
+	color: var(--ink-strong);
+	text-decoration: none;
+}
+
+.workshop-map-trigger svg {
+	flex-shrink: 0;
+	color: var(--accent);
+}
+
+.workshop-map-trigger-hint {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--accent);
+	border-bottom: 1px solid currentColor;
+	line-height: 1.3;
+}
+
+.workshop-map-trigger:hover .workshop-map-trigger-hint,
+.workshop-map-trigger:focus-visible .workshop-map-trigger-hint {
+	color: var(--accent-hover);
+}
+
+.workshop-map-dialog {
+	width: min(100% - 2rem, 52rem);
+	max-height: calc(100vh - 2rem);
+	padding: 0;
+	border: 0;
+	border-radius: var(--radius);
+	background: var(--surface-raised);
+	color: var(--ink-strong);
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+	overflow: hidden;
+}
+
+.workshop-map-dialog::backdrop {
+	background: rgba(26, 26, 26, 0.55);
+}
+
+/* Lock page scroll behind the open dialog (class set in workshop-map.js) */
+body.workshop-map-open {
+	overflow: hidden;
+}
+
+.workshop-map-dialog-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem 1rem 1rem 1.5rem;
+	border-bottom: 1px solid var(--line);
+}
+
+.workshop-map-dialog-title {
+	font-family: var(--font-heading);
+	font-size: 1.1rem;
+	font-weight: 500;
+	margin: 0;
+}
+
+.workshop-map-close {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--ink-strong);
+	cursor: pointer;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.workshop-map-close:hover {
+	background: var(--accent-soft);
+	color: var(--accent);
+}
+
+.workshop-map-close:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+.workshop-map-frame {
+	position: relative;
+	aspect-ratio: 16 / 10;
+	background: var(--line);
+}
+
+.workshop-map-frame iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.workshop-map-external {
+	margin: 0;
+	padding: 0.9rem 1.5rem 1.1rem;
+	font-size: 14px;
+}
+
+@media (max-width: 600px) {
+	.workshop-map-frame {
+		aspect-ratio: 4 / 5;
+	}
+
+	.workshop-map-dialog-header {
+		padding: 0.75rem 0.75rem 0.75rem 1.1rem;
+	}
+}
+
+.workshop-product .workshop-details-spots {
+	color: var(--muted);
+	margin: 0 0 1rem;
+}
+
+.workshop-product .workshop-details-description {
+	margin: 1.25rem 0 1.75rem;
+}
+
+/* =============================
+  # Booking (payment options underneath)
+============================= */
+
+.workshop-product-booking {
+	max-width: 34rem;
+	padding: 1.5rem;
+	background: var(--surface-raised);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-soft);
+}
+
+.woocommerce div.product.workshop-product .workshop-product-booking form.cart {
+	margin: 0;
+}
+
+/* Express payment buttons (Apple Pay / Google Pay / PayPal) that gateways
+   inject after the form — give them room and full width */
+.workshop-product-booking form.cart ~ *,
+.workshop-product-booking .wc-stripe-product-checkout-container,
+.workshop-product-booking #wc-stripe-express-checkout-element,
+.workshop-product-booking .ppc-button-wrapper {
+	margin-top: 1rem;
+	width: 100%;
+}
+
+.workshop-product .btn-sold-out {
+	display: inline-block;
+	padding: 0.85rem 1.35rem;
+	font-family: var(--font-heading);
+	font-size: 15px;
+	font-weight: 600;
+	border-radius: 999px;
+	background: var(--line);
+	color: var(--muted);
+	cursor: default;
+}
+
+/* =============================
+  # Related workshops
+============================= */
+
+.workshop-product-related {
+	background: var(--surface-raised);
+	border-top: 1px solid var(--line);
+}
+
+.workshop-product .section.workshop-product-related {
+	padding: 4rem 0;
+}
+
+.workshop-product-related .related {
+	margin: 0;
+}
+
+/* =============================
+  # Desktop: content left, clipped image right
+============================= */
+
+@media (min-width: 900px) {
+	.workshop-product-grid {
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+		align-items: stretch;
+		min-height: min(80vh, 44rem);
+	}
+
+	/* Align content to the site container's left edge, like .hero-content */
+	.workshop-product-info {
+		width: auto;
+		margin-inline: 0;
+		margin-left: max(1.25rem, calc(50vw - var(--max-w) / 2));
+		padding: 3rem 3rem 4rem 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.workshop-product-media {
+		order: 0;
+		aspect-ratio: auto;
+		min-height: 100%;
+		background: none;
+	}
+
+	.workshop-product-media-inner {
+		clip-path: url(#organicWorkshop);
+		max-height: 550px;
+	}
+}
+
+/* =============================
+  # Breakpoints
+============================= */
+
+@media (max-width: 600px) {
+	.workshop-product-info {
+		padding: 1.5rem 0 2.5rem;
+	}
+
+	.workshop-product-booking {
+		padding: 1.1rem;
+	}
+
+	.woocommerce div.product.workshop-product .workshop-product-booking form.cart .button {
+		flex: 1 1 auto;
+	}
+}
+
+/* =============================
+  # Waiting list (sold out)
+  Markup: inc/waiting-list.php → bonsai_waitlist_render_form()
+============================= */
+
+.workshop-waitlist {
+	margin-top: 1.25rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--line);
+}
+
+.workshop-waitlist-title {
+	font-family: var(--font-heading);
+	font-size: 1.15rem;
+	font-weight: 500;
+	color: var(--ink-strong);
+	margin: 0 0 0.35rem;
+}
+
+.workshop-waitlist-intro {
+	font-size: 15px;
+	color: var(--muted);
+	margin: 0 0 1rem;
+}
+
+.workshop-waitlist-label {
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--ink-strong);
+	margin-bottom: 0.35rem;
+}
+
+.workshop-waitlist-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin-bottom: 0.85rem;
+}
+
+.workshop-waitlist-row input[type="email"] {
+	flex: 1 1 14rem;
+	width: auto;
+}
+
+.workshop-waitlist-row .btn {
+	flex: 0 0 auto;
+}
+
+.workshop-waitlist-row .btn:disabled {
+	opacity: 0.6;
+	cursor: wait;
+}
+
+.workshop-waitlist-consent {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	font-size: 13px;
+	line-height: 1.5;
+	color: var(--muted);
+	cursor: pointer;
+}
+
+.workshop-waitlist-consent input[type="checkbox"] {
+	flex-shrink: 0;
+	width: 1.05rem;
+	height: 1.05rem;
+	margin-top: 0.1rem;
+	accent-color: var(--accent);
+}
+
+.workshop-waitlist-consent a {
+	text-decoration: underline;
+}
+
+/* Honeypot — off-screen rather than display:none so bots still see it */
+.workshop-waitlist-hp {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.workshop-waitlist-message:empty {
+	display: none;
+}
+
+.workshop-waitlist-message {
+	margin: 0.85rem 0 0;
+	padding: 0.75rem 1rem;
+	font-size: 14px;
+	border-radius: var(--radius);
+	background: var(--surface);
+	color: var(--ink-strong);
+}
+
+.workshop-waitlist-message.is-success {
+	border-left: 3px solid var(--sage);
+}
+
+.workshop-waitlist-message.is-error {
+	border-left: 3px solid #a4262c;
+}
+
+/* Signed up — hide the form, keep the confirmation */
+.workshop-waitlist.is-complete .workshop-waitlist-form,
+.workshop-waitlist.is-complete .workshop-waitlist-intro {
+	display: none;
+}

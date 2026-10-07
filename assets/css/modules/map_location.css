@@ -1,0 +1,134 @@
+/**
+ * Map / Location Module
+ *
+ * Address, phone, directions link, and an opening-hours table.
+ * No embedded map iframe — no consent-wrapping required.
+ * Styles for template-parts/modules/map_location.php
+ */
+
+.map-location {
+	background: var(--surface);
+	padding: 4rem 0;
+}
+
+.map-location .section-title {
+	font-family: var(--font-heading);
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
+	font-weight: 400;
+	text-align: center;
+	color: var(--ink-strong);
+	margin: 0 0 2.5rem;
+	letter-spacing: 0.02em;
+}
+
+.max-w-narrow {
+	max-width: 42rem;
+}
+
+.map-location-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+}
+
+.map-location-details {
+	text-align: center;
+}
+
+.map-location-address {
+	color: var(--ink);
+	font-size: 1rem;
+	line-height: 1.6;
+	margin: 0 0 0.75rem;
+}
+
+.map-location-phone {
+	margin: 0 0 1.25rem;
+}
+
+.map-location-phone a {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+.map-location-phone a:hover {
+	color: var(--accent-hover);
+}
+
+.map-location-hours {
+	width: 100%;
+	border-collapse: collapse;
+	max-width: 24rem;
+	margin: 0 auto;
+}
+
+.map-location-hours tr {
+	border-bottom: 1px solid var(--line);
+}
+
+.map-location-hours tr:last-child {
+	border-bottom: none;
+}
+
+.map-location-hours th,
+.map-location-hours td {
+	padding: 0.6rem 0.25rem;
+	font-size: 0.9rem;
+	text-align: left;
+}
+
+.map-location-hours th {
+	font-weight: 500;
+	color: var(--ink-strong);
+}
+
+.map-location-hours td {
+	color: var(--muted);
+	text-align: right;
+}
+
+/* Desktop: details + hours side by side */
+@media (min-width: 700px) {
+	.map-location-grid {
+		grid-template-columns: 1fr 1fr;
+		align-items: start;
+		text-align: left;
+	}
+
+	.map-location-details {
+		text-align: left;
+	}
+}
+
+/* Breakpoints */
+@media (max-width: 1536px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1366px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1280px) {
+	/* No changes needed */
+}
+
+@media (max-width: 992px) {
+	/* No changes needed */
+}
+
+@media (max-width: 768px) {
+	.map-location {
+		padding: 3rem 0;
+	}
+}
+
+@media (max-width: 600px) {
+	.map-location {
+		padding: 2.5rem 0;
+	}
+
+	.map-location-grid {
+		gap: 1.5rem;
+	}
+}

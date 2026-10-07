@@ -1,0 +1,86 @@
+/**
+ * Logo Strip Module
+ *
+ * "As featured in" / press mentions row.
+ * Styles for template-parts/modules/logo_strip.php
+ */
+
+.logo-strip {
+	background: var(--surface);
+	padding: 2.5rem 0;
+}
+
+.logo-strip-title {
+	text-align: center;
+	font-size: 0.8rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--muted);
+	margin: 0 0 1.75rem;
+}
+
+.logo-strip-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 2.5rem 3rem;
+}
+
+.logo-strip-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.logo-strip-item img {
+	max-height: 2.5rem;
+	width: auto;
+	display: block;
+	filter: grayscale(100%);
+	opacity: 0.6;
+	transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+.logo-strip-item a:hover img,
+.logo-strip-item a:focus-visible img {
+	filter: grayscale(0%);
+	opacity: 1;
+}
+
+/* Breakpoints */
+@media (max-width: 1536px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1366px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1280px) {
+	/* No changes needed */
+}
+
+@media (max-width: 992px) {
+	/* No changes needed */
+}
+
+@media (max-width: 768px) {
+	.logo-strip {
+		padding: 2rem 0;
+	}
+
+	.logo-strip-row {
+		gap: 2rem 2rem;
+	}
+
+	.logo-strip-item img {
+		max-height: 2rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.logo-strip-row {
+		gap: 1.5rem;
+	}
+}

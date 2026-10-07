@@ -1,0 +1,102 @@
+/**
+ * CTA Banner Module
+ *
+ * Full-width single heading + button, on an accent-colour or image background.
+ * Styles for template-parts/modules/cta_banner.php
+ */
+
+.cta-banner {
+	position: relative;
+	overflow: hidden;
+	padding: 4rem 0;
+	text-align: center;
+}
+
+.cta-banner-color {
+	background: var(--accent);
+}
+
+.cta-banner-image {
+	color: #fff;
+}
+
+.cta-banner-bg-image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 0;
+}
+
+.cta-banner-image::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.45);
+	z-index: 1;
+}
+
+.cta-banner-inner {
+	position: relative;
+	z-index: 2;
+	max-width: 36rem;
+}
+
+.cta-banner-heading {
+	font-family: var(--font-heading);
+	font-weight: 400;
+	font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+	color: var(--on-accent, #fff);
+	margin: 0 0 0.75rem;
+}
+
+.cta-banner-subtext {
+	font-size: 1rem;
+	color: var(--on-accent, #fff);
+	opacity: 0.9;
+	margin: 0 0 1.5rem;
+}
+
+.cta-banner-button {
+	background: var(--on-accent, #fff);
+	color: var(--accent);
+}
+
+.cta-banner-button:hover {
+	background: var(--surface);
+	color: var(--accent-hover);
+}
+
+/* Breakpoints */
+@media (max-width: 1536px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1366px) {
+	/* No changes needed */
+}
+
+@media (max-width: 1280px) {
+	/* No changes needed */
+}
+
+@media (max-width: 992px) {
+	/* No changes needed */
+}
+
+@media (max-width: 768px) {
+	.cta-banner {
+		padding: 3rem 0;
+	}
+}
+
+@media (max-width: 600px) {
+	.cta-banner {
+		padding: 2.5rem 0;
+	}
+
+	.cta-banner-subtext {
+		margin-bottom: 1.25rem;
+	}
+}
