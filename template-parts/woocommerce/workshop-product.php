@@ -77,7 +77,7 @@ $spots    = ( $in_stock && $product->managing_stock() ) ? (int) $product->get_st
 
 		<div class="workshop-product-grid">
 			<div class="workshop-product-info">
-				<p class="workshop-product-kicker"><?php esc_html_e( 'Workshop', 'fika-bonsai' ); ?></p>
+				<!--<p class="workshop-product-kicker"><?php esc_html_e( 'Workshop', 'fika-bonsai' ); ?></p>-->
 
 				<h1 id="workshop-product-title" class="product_title workshop-product-title"><?php the_title(); ?></h1>
 

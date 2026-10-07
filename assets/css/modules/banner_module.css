@@ -38,6 +38,17 @@
 	max-width: 40rem;
 }
 
+/* Left alignment — inner spans the full container so content lines up with the site's left edge;
+   the 40rem measure moves to the text elements instead. */
+.banner-module--align-left .banner-module-inner {
+	max-width: var(--max-w);
+}
+
+.banner-module--align-left .banner-module-title,
+.banner-module--align-left .banner-module-subheader {
+	max-width: 40rem;
+}
+
 .banner-module-title {
 	font-family: var(--font-heading);
 	font-weight: 400;

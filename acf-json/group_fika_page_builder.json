@@ -2265,6 +2265,29 @@
                             "append": ""
                         },
                         {
+                            "key": "field_fika_banner_alignment",
+                            "label": "Content Alignment",
+                            "name": "content_alignment",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "Position of the title, subheader and button.",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "centre": "Centre",
+                                "left": "Left"
+                            },
+                            "default_value": "centre",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
+                        },
+                        {
                             "key": "field_fika_banner_subheader",
                             "label": "Subheader",
                             "name": "subheader",
@@ -2628,5 +2651,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1791331200
+    "modified": 1791331400
 }

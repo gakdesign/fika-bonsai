@@ -62,7 +62,7 @@ $meta = implode( ' · ', array_filter( array( $event_date, $event_time ) ) );
 
 	<div class="event-details-grid">
 		<div class="event-details-info">
-			<p class="event-details-kicker"><?php echo esc_html( $heading ); ?></p>
+			<!--<p class="event-details-kicker"><?php echo esc_html( $heading ); ?></p>-->
 
 			<h2 id="event-details-heading" class="event-details-title"><?php the_title(); ?></h2>
 

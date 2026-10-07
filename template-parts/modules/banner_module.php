@@ -15,13 +15,20 @@ $title             = get_sub_field( 'title' );
 $subheader         = get_sub_field( 'subheader' );
 $cta_text          = get_sub_field( 'cta_text' );
 $cta_link          = get_sub_field( 'cta_link' );
+$alignment         = get_sub_field( 'content_alignment' );
 
 if ( ! $title ) {
 	return;
 }
+
+// Whitelist the modifier — anything unexpected falls back to the default centred layout.
+$section_classes = 'banner-module';
+if ( 'left' === $alignment ) {
+	$section_classes .= ' banner-module--align-left';
+}
 ?>
 
-<section class="banner-module" aria-labelledby="banner-module-heading">
+<section class="<?php echo esc_attr( $section_classes ); ?>" aria-labelledby="banner-module-heading">
 	<?php if ( ! empty( $background_image['url'] ) ) : ?>
 	<?php
 	$img_id = is_array( $background_image ) ? $background_image['ID'] : $background_image;
